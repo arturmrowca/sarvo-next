@@ -1,0 +1,62 @@
+<!-- Generated template for the DateInformationComponent component -->
+<ion-buttons *ngIf="activeHeader" left>
+  <button style="background:black;color:white;border-radius: 100px !important;width:40px;height:40px;" ion-button icon-only (click)="backHit()">
+      <ion-icon name="arrow-back"></ion-icon>
+  </button>
+</ion-buttons>
+<ion-title *ngIf="activeHeader" text-center style="margin-top:-2vh;">Datumsdetails</ion-title> 
+<ion-title *ngIf="activeHeader" text-center style="margin-bottom:2vh;">{{dateTitle()}}</ion-title> 
+
+<ion-item-divider style = "width:100%">
+  <ion-label>
+    Zugesagt
+  </ion-label>
+</ion-item-divider>
+<ion-list class="contacts-list">
+  <ion-item *ngFor="let item of this._sarvoContactsIn">
+      <ion-avatar item-start>
+        <span class="contacts">
+          <img src="{{item.profilePicturePreviewBase64}}">
+          <ion-icon name='checkmark-circle' class="checkmark-circle"></ion-icon>
+        </span>
+      </ion-avatar>
+      <h2 style="width:100vw;">{{item.username}}</h2>
+      <p>{{item.phonenumber}}</p>
+  </ion-item>
+</ion-list>
+
+<ion-item-divider style = "width:100%">
+  <ion-label>
+    Vielleicht
+  </ion-label>
+</ion-item-divider>
+<ion-list class="contacts-list">
+  <ion-item *ngFor="let item of this._sarvoContactsMaybe">
+      <ion-avatar item-start>
+        <span class="contacts">
+          <img src="{{item.profilePicturePreviewBase64}}">
+          <ion-icon name='checkmark-circle' class="checkmark-circle"></ion-icon>
+        </span>
+      </ion-avatar>
+      <h2 style="width:100vw;">{{item.username}}</h2>
+      <p>{{item.phonenumber}}</p>
+  </ion-item>
+</ion-list>
+
+<ion-item-divider style = "width:100%">
+  <ion-label>
+    Abgesagt
+  </ion-label>
+</ion-item-divider>
+<ion-list class="contacts-list">
+  <ion-item *ngFor="let item of this._sarvoContactsOut">
+      <ion-avatar item-start>
+        <span class="contacts">
+          <img src="{{item.profilePicturePreviewBase64}}">
+          <ion-icon name='checkmark-circle' class="checkmark-circle"></ion-icon>
+        </span>
+      </ion-avatar>
+      <h2 style="width:100vw;">{{item.username}}</h2>
+      <p>{{item.phonenumber}}</p>
+  </ion-item>
+</ion-list>

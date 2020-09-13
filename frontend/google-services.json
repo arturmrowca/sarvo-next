@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "347630231542",
+    "firebase_url": "https://universum-d41e1.firebaseio.com",
+    "project_id": "universum-d41e1",
+    "storage_bucket": "universum-d41e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347630231542:android:82fa0a3ed37520a1",
+        "android_client_info": {
+          "package_name": "sarvo.release"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347630231542-941fhot8lt96kpcumqea8471rl6f3juh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSI-BkC2pUMjGJmt5gbu9BuFyB4QDA9u8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

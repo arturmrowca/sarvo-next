@@ -1,0 +1,181 @@
+add-vote-overlay {
+
+    /* VARIABLES*/
+    $overlay-card-color:color($colors, sarvo-white, base);
+    $overlay-card-front-color: green;
+
+    $add-date-button-color:white;
+    $add-date-button-bg-color:color($colors, primary, base);
+    $add-date-button-choose-color:color($colors, primary, base);
+    $add-date-button-cancel-color:white;
+    $add-date-button-cancel-bg-color:color($colors, primary, base);
+
+    $vote-card-color:color($colors, primary, base);
+    $vote-card-bg-color:white;
+
+    $vote-card-date-label-color:color($colors, sarvo-light, base);
+    $vote-card-date-label-bg-color:color($colors, primary, base);
+    $vote-card-date-icon-color:green;
+
+    $vote-option-fix-box-bg-color:color($colors, sarvo-green, base);;
+    $vote-option-fix-box-color:color($colors, primary, base);
+
+    $done-button-color:color($colors, sarvo-light, base);
+    $done-button-bg-color:color($colors, primary, base);
+
+    $main-font:Franklin Gothic Thin,sans-serif;
+    $title-font:$main-font;
+    $add-button-font:$main-font;
+    $card-font:$main-font;
+    $done-font:$main-font;
+    
+
+    ::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+    
+
+    .overlay-ion-card{
+        
+        position:absolute;
+        width:100vw;
+        left:0;
+        padding: 0 !important;
+        margin-left:0 !important;
+        margin-right:auto !important;
+        top:0vw;
+        height:97vh;   
+
+    background-color: $overlay-card-color;
+    z-index: 2;
+    border-radius:10px !important;
+    opacity: 0.9;
+    }
+    
+
+    .title-title-label{
+        text-align:center;
+        margin-top:3vh;
+        margin-bottom:3vh;
+        color:$overlay-card-front-color;
+        font-family:$title-font;
+    }
+
+    .edit-button-nav{
+        background:black;
+        color:white;
+        border-radius: 100px !important;
+        width:auto;
+        height:7vh;
+        vertical-align: middle;
+        float: right;
+        margin-right:7vw;
+        margin-top:0vh;
+      }
+
+    .add-date-button{
+        font-size:3vh;
+        background:$add-date-button-bg-color;
+        top:0vw;
+        margin:0 auto;
+        display:block;
+        height:7vh;
+        width:120%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        color:$add-date-button-color;
+        font-family:$add-button-font;
+    }
+
+    .add-date-choose-date-label{
+        color:$add-date-button-choose-color;
+        font-family:$add-button-font;
+        
+    }
+    .add-date-cancel-button
+    {
+        background:$add-date-button-cancel-bg-color;
+        font-size:4vw;
+        color:$add-date-button-cancel-color;
+        font-family:$add-button-font;
+        top:-10vw;
+        margin:0 auto;
+        display:block;
+        height:6vw;
+        width:80%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .vote-option-card{
+        margin-right:0vw;
+        width:95%;
+        height:100%;
+        font-family:$card-font;
+        border-radius:1px !important;
+        background:$vote-card-bg-color;
+        color:$vote-card-color;
+        font-family:$card-font;
+    }
+    /*
+    .vote-option-date-label{
+        font-size:4vw;
+        color:$vote-card-date-label-color;
+        background:$vote-card-date-label-bg-color;
+        font-family:$card-font;
+    }
+
+    .vote-option-time-label{
+        font-size:3.5vw;
+        color:$vote-card-date-label-color;
+        background:$vote-card-date-label-bg-color;
+        font-family:$card-font;
+    }
+
+    .vote-option-icon{
+        margin-left:2vw;
+        color:$vote-card-date-icon-color;
+    }
+    
+    .ion-vote-option-selection
+    {
+        font-size:2px !important;
+        font-family:$card-font;
+    }
+
+    .vote-option-fix-select-item{
+        margin-top:1vw;
+        width:30vw !important;
+        min-width: 170%;
+        border-radius:5px !important;
+        background:$vote-option-fix-box-bg-color;
+        color:$vote-option-fix-box-color;
+        font-family:$card-font;
+    }
+
+    .vote-option-fix-select-select{
+        font-size:4vw;
+        width:120% !important;
+        background:$vote-option-fix-box-bg-color;
+        color:$vote-option-fix-box-color;
+        max-width:120% !important;
+        font-family:$card-font;
+    }*/
+    .done-button{
+        background:$done-button-bg-color;
+        color:$done-button-color;
+        font-family:$done-font;
+        font-size:5vw;
+        top:0vw;
+        margin:0 auto;
+        display:block;
+        height:7vh;
+        width:100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

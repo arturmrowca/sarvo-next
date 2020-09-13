@@ -1,0 +1,71 @@
+<ion-content>
+
+  <collab-list></collab-list>
+</ion-content>
+
+
+<!-- ion-content padding>
+
+    <ion-grid>
+      <ion-row>
+        <img src="../../assets/imgs/sarvo_icon_512.png" alt="" class="center" height="256" width="256">
+      </ion-row>
+      <ion-row style="height: 2rem"></ion-row>
+      
+      <ion-row center>
+        <p class="justify" style="font-size: medium">
+          Willkommen bei S'arvo! Wir helfen dir deinen Freizeitspaß zu organisieren und zu maximieren. Für ein geileres Leben!
+        </p>
+      </ion-row>      
+      <ion-list>
+        <ion-item>
+          Registriere dich mit Handynummer:
+        </ion-item>
+        <ion-item>
+          <ion-input text-center type="tel" inputmode="tel" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,9}$"
+           placeholder="+49123456789" [(ngModel)]="model.userPhoneNumber" 
+          [disabled]="model.verificationSend" 
+          (ionChange)='checkPhoneNumber($event.value)'></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="model.verificationSend">
+          <ion-input text-center type="number" placeholder="Enter 6 Digit Code" [(ngModel)]="model.userEnteredVerification"></ion-input>
+        </ion-item>
+  
+        <ion-row *ngIf="!model.verificationSend" center>
+          <ion-col text-center>
+            <button ion-button round color="primary" (click)="attemptVerfication($event)" [disabled]="!model.userPhoneNumberValid" >
+            {{'LOGIN_PAGE.BUTTONS.VERIFY' | translate}} 
+            </button>
+          </ion-col> 
+        </ion-row>
+        <ion-row *ngIf="model.verificationSend" center>
+          <ion-col text-center>
+            <button ion-button round color="primary" (click)="showProfile($event)" [disabled]="!model.verficicationCodeIsValid">
+            {{'GENERAL.NEXT' | translate}}
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row center>
+          <ion-col text-center>
+            <button ion-button round color="primary" (click)="showConsentPage()">
+              Datenschutz und Nutzung
+            </button>
+          </ion-col> 
+        </ion-row>
+      
+      <ion-row center>
+        <p>
+          Damit du S'arvo nutzen kannst musst du unserer Datenschutzrichtlinie und unseren Nutzungsbedingungen zustimmen. Lies dir diese durch und entscheide ob du diesen zustimmen möchtest.
+        </p>
+      </ion-row>
+      <ion-row style="font-weight:bold;" center> Was ist S'arvo?</ion-row>
+      <ion-row center>
+        <p>
+          Wir bei S'arvo möchten dir helfen mehr aus deiner Freizeit zu machen. Mit S'arvo kannst du schnell Treffen mit deinen Freunden vereinbaren oder auch größere Veranstaltungen erstellen und planen. Ob spontan oder lange im voraus. Merke dir Sachen die du machen möchtest in deiner Bucketlist und vereinbare einen Termin mit deinen Freunden direkt über die App, wenn du das Erlebnis starten willst. 
+          Das Leben ist zu kurz, um nichts zu erleben. Werde ein Teil der S'arvo Community und erlebe mehr Lagerfeuermomente, Weinabende, Kinogänge, Kochkurse, Tastings oder was auch immer ihr liebt zu tun :). Einfach in S'arvo merken und planen.    
+        </p>
+      </ion-row>
+    </ion-list>
+    </ion-grid>
+  </ion-content -->

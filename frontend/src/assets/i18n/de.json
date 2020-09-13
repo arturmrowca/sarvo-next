@@ -1,0 +1,137 @@
+{
+  "HELLO": "WORLD",
+  "GENERAL": {
+    "CONTINUE": "Fortsetzen",
+    "OK": "OK",
+    "CANCEL": "Abbruch",
+    "BACK": "Zurück",
+    "NEXT": "Weiter",
+    "INVITE": "Einladen"
+  },
+  "USER_PAGE" : {
+    "BUTTONS": {
+      "CHANGE_RROFILE_IMAGE": "Ändern",
+      "SAVE": "Speichern"
+    },
+    "LABELS": {
+      "TITLE":"Dein Profil",
+      "USERNAME": "Nutzername",
+      "PHONE_NUMBER": "Handynummer",
+      "USAGE_STATISTICS": "Teile deine Statistiken"
+    }
+  },
+  "EVENT_DETAILS" : {
+    "BUTTONS": {
+      "CHANGE_RROFILE_IMAGE": "Ändern",
+      "SAVE": "Sichern",
+      "MORE_FRIENDS": "Weitere Freunde",
+      "ADD_FRIEND": "Hinzufügen",
+      "MANAGE_GROUPS": "Gruppen verwalten",
+      "OPEN_MAPS": "In Maps öffnen"
+    },
+    "LABELS": {
+      "EVENT_NAME": "Eventname:",
+      "PARTICIPATION": "Teilnehmer",
+      "ADD_FRIENDS": "Freunde hinzufügen:",
+      "DATE_LABEL": "Datum",
+      "DATE_INPUT_LABEL": "Datum wählen",
+      "PLACE_LABEL": "Ort: ",
+      "ADD_VOTE_TITLE":"Datum adden oder fixieren",
+      "ADD_VOTE_ADD_OPTION_BUTTON":"Neue Datumsopt.",
+      "ADD_VOTE_ADD_OPTION_CLICK":"Hier tappen für Auswahl",
+      "ADD_VOTE_DONE_BUTTON":"Fertig",
+      "EVENT_VOTE_TITLE":"Für Datum stimmen",
+      "EVENT_VOTE_DONE_BUTTON":"Fertig",
+      "EVENT_SWIPE_CHAT": "Swipe zum chatten!"
+    }
+  },
+  "EVENT_CREATE" : {
+    "BUTTONS": {
+      "MANAGE_GROUPS" : "Gruppen verwalten",
+      "CREATE_EVENT" : "Event erstellen"
+    },
+    "LABELS": {
+      "TITLE":"Neue Veranstaltung",
+      "EVENT_NAME": "Eventname:",
+      "ADD_FRIENDS": "Freunde hinzufügen:",
+      "ADD_FRIENDS_LABEL": "Hinzufügen",
+      "ADD_FRIEND_BUTTON": "Hinzufügen",
+      "DATE_LABEL": "Datum",
+      "DATE_INPUT_LABEL": "Datum wählen...",
+      "PLACE_LABEL": "Ort: ",
+      "OPEN_MAPS_LABEL": "In Maps öffnen",
+      "SET_FIXED":"Zeitpunkt fix setzen"
+    }
+  },
+  "LOGIN_PAGE": {
+    "TEXTS": {
+      "WELCOME_HEADLINE": "Willkommen bei S'Arvo!",
+      "WELCOME_TEXT": "Veranstaltungen gemeinsam organisieren!"
+    },
+    "BUTTONS": {
+      "VERIFY": "Verifikationstext senden"
+    },
+    "LABELS": {
+      "PHONE_NUMBER": "Handy#",
+      "SMS_CODE": "6 Ziffern Code"
+    }
+  },
+  "TEMPLATE_PAGE": {
+    "TEXTS": {
+      "SAMPLE": "Text that appears on the page goes here"
+    },
+    "BUTTONS": {
+      "SAMPLE": "Text that ends up on buttons goes here"
+    },
+    "LABELS": {
+      "SAMPLE": "Text that is used on input labels goes here"
+    }
+  },
+  "HOME_PAGE": {
+    "BUTTONS": {
+      "MYEVENTS": "Veranstaltungen",
+      "PENDING": "Ausstehend",
+      "ALL": "Alle"
+    },
+    "TEXTS": {
+      "NAVBAR_FIXED": "Feststehend.",
+      "NAVBAR_PENDING": "Ausstehend."
+    }
+  },
+  "EVENT_ATT_MGMT": {
+    "BUTTONS": {
+      "CONTACTS": "Kontakte",
+      "GROUPS": "Gruppen"
+    }
+  },
+  "FEEDBACK": {
+    "TEXTS": {
+      "WELCOME_HEADLINE": "Gib uns Feedback!",
+      "PL_CATEGORY": "Wähle eine Kategorie.",
+      "PL_TEXT": "Dein Feedback."
+    },
+    "BUTTONS": {
+      "SEND": "Senden"
+    },
+    "LABELS": {
+      "RATING": "Gesamtbewertung",
+      "CATEGORY": "Feedbackkategorie",
+      "FB_TEXT": "Deine Meinung hilft uns immer besser zu werden..."
+    }
+  },
+  "GROUP_MGMT": {
+    "BUTTONS": {
+      "CHANGE_DESCRIPTION": "Beschreibung ändern",
+      "CHANGE_MEMBERS": "Mitglieder verwalten",
+      "CANCEL":"Abbruch",
+      "CONTINUE":"Weiter"
+    },
+    "LABELS": {
+      "TITLE":"Deine Gruppen!",
+      "ADD_GROUP_TITLE": "Gruppenname",
+      "ADD_GROUP_TEXT":"Gib den Namen der neuen Gruppe ein",
+      "ADD_GROUP_PLACE":"Gruppenname"
+
+    }
+  }
+}

@@ -1,0 +1,101 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'USER_PAGE.LABELS.TITLE' | translate}}
+        <img alt="logo" height="40" src="../../assets/imgs/sarvo_icon.png" style="float:right;align-self: right;" > 
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-grid *ngIf="_model">
+
+    <loader *ngIf="loading"></loader>
+      
+    <ion-row *ngIf="!loading" center>
+      <ion-col text-center>
+        <img src="{{_model.profilePictureBase64}}" class="circle-pic center">
+        <ion-row class='changepic-row'>
+          <ion-icon *ngIf="_changePicture" (click)="changeProfilePicture(1)" name="camera"></ion-icon>
+          <ion-icon *ngIf="_changePicture" (click)="changeProfilePicture(0)" name="photos" style="padding-left:3%;"></ion-icon>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!loading" center>
+      <button ion-button round (click)="changeProfilePic()" class="center">
+        Bild ändern
+      </button>
+      <!--
+      <button ion-button (click)="changeProfilePictureCam()" class="center">
+        Change from Camera
+      </button>
+      -->
+    </ion-row>
+
+
+    <ion-list *ngIf="!loading">
+      <ion-item >
+        <ion-label color="primary" stacked>{{ "USER_PAGE.LABELS.PHONE_NUMBER" | translate}}</ion-label>
+        <ion-input [(ngModel)]="_model.phonenumber" [disabled]="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" stacked>{{ "USER_PAGE.LABELS.USERNAME" | translate}}</ion-label>
+        <ion-input [(ngModel)]="_model.username"></ion-input>
+      </ion-item>
+
+      <!-- ion-item>
+        <ion-label>{{ "USER_PAGE.LABELS.USAGE_STATISTICS" | translate}}</ion-label>
+        <ion-toggle [(ngModel)]="_model.allowNotifications"></ion-toggle>
+      </ion-item -->
+
+      <!-- ion-item>
+        <ion-label>Mit Kalender verbinden</ion-label>
+        <ion-toggle (ngModelChange)="connectCalendarStateChange()" [(ngModel)]="_model.connectToCalendar"></ion-toggle>
+      </ion-item -->
+      <ion-item *ngIf = "_model.connectToCalendar">
+        <ion-label>Kalenderwahl:</ion-label>
+        <ion-select [(ngModel)]="calendarSync.Instance.selectedCalendarId" interface="action-sheet" >
+          <ion-option  value = "{{calendar.id}}" *ngFor ="let calendar of calendarSync.Instance.listOfAvailableCalendars;">
+            {{calendar.name}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+
+    </ion-list>
+    <ion-row *ngIf="!loading" center>
+      <ion-col text-center>
+        <button round ion-button (click)="showHome()">
+          {{'USER_PAGE.BUTTONS.SAVE' | translate}}
+        </button>
+      </ion-col>
+    </ion-row>
+
+      
+    <ion-row *ngIf="!loading" center>
+      <ion-item-divider>
+        Erweiterte Einstellungen
+      </ion-item-divider> 
+    </ion-row>
+    <ion-row *ngIf="!loading" center>
+      <ion-col text-center>
+        <button round ion-button (click)="deleteAccountAndData()">
+          Lösche deinen Account
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <p>Die aktuellen Datenschutzrichtlinien und Nutzungungsbedingungen findest du stets unter https://api.sarvo-api.xyz/privacy</p>
+    </ion-row>
+  </ion-grid>
+</ion-content>

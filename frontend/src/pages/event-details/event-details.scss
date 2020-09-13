@@ -1,0 +1,444 @@
+page-event-details {
+
+  /* VARIABLES https://www.youtube.com/watch?v=WUweWDFVfTg*/
+
+  /* VARIABLES */
+  $background-color:black;
+
+  $title-color: color($colors, sarvo-white, base);
+  $title-font-weight:bold;
+
+  $main-card-bg-color:color($colors, sarvo-white, base);
+  $main-card-start-color:color($colors, primary, base);
+  $main-card-date-color: color($colors, primary, base);
+
+  $event-fixed-count-label-color:grey;
+  $event-fixed-count-icon-color:grey;
+
+  $description-show-more-color:color($colors, sarvo-green, base);
+
+  $options-component-icon-primary-color:color($colors, primary, base);
+  $options-component-icon-secondary-color:black;
+
+  $main-font:Franklin Gothic Thin,sans-serif;
+
+  $title-font:Roboto;
+  $card-font:$main-font;
+  $card-start-font:$main-font;
+  $card-estimate-font:$main-font;
+  $card-count-font:$main-font;
+
+  /* VARIABLES*/
+  $overlay-card-color:color($colors, sarvo-white, base);
+  $overlay-card-front-color: green;
+
+  $add-date-button-color:white;
+  $add-date-button-bg-color:color($colors, primary, base);
+  $add-date-button-choose-color:color($colors, primary, base);
+  $add-date-button-cancel-color:white;
+  $add-date-button-cancel-bg-color:color($colors, primary, base);
+
+  $vote-card-color:color($colors, primary, base);
+  $vote-card-bg-color:white;
+
+  $vote-card-date-label-color:color($colors, sarvo-light, base);
+  $vote-card-date-label-bg-color:color($colors, primary, base);
+  $vote-card-date-icon-color:green;
+
+  $vote-option-fix-box-bg-color:color($colors, sarvo-green, base);;
+  $vote-option-fix-box-color:color($colors, primary, base);
+
+  $done-button-color:color($colors, sarvo-light, base);
+  $done-button-bg-color:color($colors, primary, base);
+
+  $main-font:Franklin Gothic Thin,sans-serif;
+  $title-font:$main-font;
+  $add-button-font:$main-font;
+  $card-font:$main-font;
+  $done-font:$main-font;
+
+  /* IMAGE */
+  .parent {
+    width: 100%;
+    max-height: 280px;
+
+    .img-container {
+      display: block;
+      width: 100%;
+      height: auto;
+      position: relative;
+      overflow: hidden;
+      padding: 100% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
+
+      img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+  /* /IMAGE */
+
+  /* aligning slider content at the top */
+  ion-slide.swiper-slide {
+    align-items: flex-start;
+  }
+
+  /* BACKGROUND*/
+  .main-background {
+    background-image: url('../../img/test.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color:$background-color;
+    background-size:100% auto;
+  }
+
+  .main-background:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    /*top: 300px*/
+    bottom: 0;
+    background: linear-gradient(to top, rgba(80, 80, 80, 0.95) 40%, rgba(255, 255, 255, 0.13) 60%, rgba(255, 255, 255, 0.04) 70%);
+    height: 120%;
+  }
+
+  .edit-button-nav{
+    background:black;
+    color:white;
+    border-radius: 100px !important;
+    width:40px;
+    height:40px;
+  }
+
+  .edit-style{
+    font-family:$main-font;
+  }
+
+  /* TITLE */
+  /* MAIN ION CARD*/
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-ion-card{
+    position:absolute;
+    background:green;
+    width:100vw;
+    left:0;
+    padding: 0 !important;
+    margin-left:0 !important;
+    margin-right:auto !important;
+    top:25vh;
+    height:200vh;
+    background-color: $main-card-bg-color;
+    bottom:-0vw;
+    border-radius:0px !important;
+  }
+  .ion-button {
+    width: 100vw;
+  }
+  
+  .main-card-title-label{
+
+
+    font-size:4vh;
+    font-family:$title-font;
+    text-align: center;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    color:color($colors, primary, base);
+    background:white;//color($colors, primary, base);
+    width:120%;
+    margin-left:-10%;
+    margin-top:5%;
+    margin-bottom:2%;
+
+  }
+  .main-card-title-label-sub{
+
+
+    font-size:2vh;
+    font-family:$card-start-font;
+    text-align: center;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    color:color($colors, primary, base);
+    background:white;//color($colors, primary, base);
+    width:120%;
+    margin-left:-10%;
+    margin-top:-2%;
+    margin-bottom:2%;
+
+  }
+  .main-card-starts-label{
+    font-size:3.6vw;
+    font-family:$card-start-font;
+    margin-top:0.2vw !important;
+    margin-bottom: -0px;
+    color:$main-card-start-color;
+    text-align:left;
+  }
+  .main-card-time-label{
+    font-size: 7vw;
+    margin-left:-0px;
+    font-weight: bold;
+    font-family:$card-estimate-font;
+    color:$main-card-start-color;
+  }
+  .main-card-date-label
+  {
+    font-size:3.5vw;
+    color:grey;
+    font-family:$card-font;
+  }
+  .main-card-location-icon{
+    text-align: left;
+    margin-left:-4vw;
+    margin-right:3vw;
+    margin-top:-0.5vw;
+    font-size:11vw;
+    color:$main-card-start-color;
+
+  }
+  .main-card-location-label{
+    width:75%;
+    overflow-wrap: break-word;
+    margin-top:0vw;
+    font-size:3.6vw;
+    margin-right:-2vw;
+    color:$main-card-date-color;
+    font-family:$card-font;
+  }
+  .main-card-description-label{
+    width:18vw;
+    overflow-wrap: break-word;
+    margin-top:2vw;
+    font-size:3.6vw;
+    margin-right:-2vw;
+    color:$main-card-date-color;
+    font-family:$card-font;
+    text-align:left;
+  }
+
+  .description-expand-button{
+    position:relative;
+    top:-0.0vh;
+    background:transparent;
+    height:0.2vw;
+    width:0.1vw;
+    font-family:$card-font;
+    color:$description-show-more-color;
+    margin-left: auto;
+    left:72vw;
+    font-size:3vh;
+  }
+
+  .event-fixed-count-icons{
+    position:relative;
+    font-size: 4.0vw;
+    top:0vw;
+    left:-4vw;
+    margin-top:-1.5vh !important;
+    margin-left:-0.5vw !important;
+    margin-bottom:2vh !important;
+
+    color:$event-fixed-count-icon-color;
+  }
+
+  .main-ion-card ion-card-header ion-card-title{
+    font-size:2em;
+  }
+
+  .swipe-text {
+    font-size: 5vw;
+    vertical-align: middle;
+    margin-left: 0.5em;
+    color: "secondary";
+  }
+
+  .options-component-div
+  {
+    width:12vw !important;
+  }
+
+  .options-component{
+    width:12vw !important;
+    height:11vw !important;
+    margin-right:2vw !important;
+    margin-left:3.0vw;
+    margin-top:-4vw;
+    background-color:black;
+    color:$options-component-icon-primary-color;
+    background:$options-component-icon-secondary-color;
+    border-radius:30px !important;
+  }
+  .options-component-icon
+  {   /*position: relative;
+        top: 200% !important;
+        left: -130% !important;
+        transform: translate(-50%, -50%);
+        width: 130% !important;
+        height: 130% !important;
+        font-size:7vw;
+        display: block;*/
+    left:-8vw !important;
+    margin-left:0.0vw;
+
+    margin-right:3vw !important;
+    margin-top:-0.5vw;
+    font-size:11vw;
+    color:$options-component-icon-primary-color;
+  }
+
+
+
+
+
+
+
+
+
+ion-col.thin-col {
+  flex: 0 0 4px;
+  padding:0;
+  margin-right:-40px;
+}
+
+.textarea {
+  border: none;
+  width: 100%;
+  height:500px;
+  -webkit-box-sizing: border-box; /* <=iOS4, <= Android  2.3 */
+  -moz-box-sizing: border-box; /* FF1+ */
+  box-sizing: border-box; /* Chrome, IE8, Opera, Safari 5.1*/
+}
+
+.circle-pic-2{
+  width:230px;
+  height:230px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.left-label{
+  justify-content:flex-start;
+}
+
+.icon-calbut{
+  right: -20px;
+  width: 80px;
+}
+.cbutton_event {
+  height: 20px;
+  width: 20px;
+  margin-top: -0px;
+  margin-left: -13px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  border-radius: 80%;
+}
+
+.calbut_event {
+  right: -20px;
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+}
+ 
+
+.edit-button-nav{
+  background:black;
+  color:white;
+  border-radius: 100px !important;
+  width:auto;
+  height:7vh;
+  vertical-align: middle;
+  float: right;
+  margin-right:7vw;
+  margin-top:0vh;
+}
+
+.add-date-button{
+  font-size:3vh; 
+  top:0vw;
+  margin:0 auto;
+  display:block;
+  height:7vh;
+  width:120%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color:$add-date-button-color;
+  font-family:$add-button-font;
+}
+
+.add-date-choose-date-label{
+  color:$add-date-button-choose-color;
+  font-family:$add-button-font;
+  
+}
+.add-date-cancel-button
+{
+  background:$add-date-button-cancel-bg-color;
+  font-size:4vw;
+  color:$add-date-button-cancel-color;
+  font-family:$add-button-font;
+  top:-10vw;
+  margin:0 auto;
+  display:block;
+  height:6vw;
+  width:80%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+$flag-icon-css-path: '../../assets/icon/' !default;
+
+@mixin flag-icon($n, $country) {
+
+  &:nth-child(#{$n}):before {
+
+    @extend .flag-icon-background!optional;
+    background-image: url(#{$flag-icon-css-path}#{$country}.svg);
+
+    content: "";
+    height: 19px;
+    width: 20px;
+    position: absolute;
+    top: 12px;
+    margin-top: 4px;
+  }
+}
+
+@mixin flag-icon-current($country) {
+
+  [ng-reflect-model="#{$country}"] .select-text:before {
+
+    @extend .flag-icon-background!optional;
+    background-image: url(#{$flag-icon-css-path}#{$country}.svg);
+
+    content: "";
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: 10px;
+  }
+}
+
+}

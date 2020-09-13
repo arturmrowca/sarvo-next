@@ -1,0 +1,39 @@
+
+.ios, .md {
+
+    page-intro-splash {
+
+        .center{
+            margin-top:20vh;
+            opacity: 0;
+            transform: rotate3d(1, 1, 0, 50deg);
+            animation: 2s 0.2s ease fadeInAndSpin;
+            animation-fill-mode: forwards;
+        }
+
+        .scroll-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+
+}
+
+@keyframes fadeInAndSpin {
+
+    100% {
+        opacity: 1;
+        transform: rotate3d(1, 1, 0, 0deg);
+    }
+
+}
+
+@keyframes fadeIn {
+
+    100% {
+        opacity: 1;
+    }
+
+}

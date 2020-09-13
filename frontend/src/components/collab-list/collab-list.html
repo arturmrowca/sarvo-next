@@ -1,0 +1,30 @@
+<!-- Generated template for the CollabListComponent component -->
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let group of groups" class="item-stable"
+    (click)="toggleGroup(group)"
+    ng-class="{active: isGroupShown(group)}">
+    <ion-icon *ngIf="!isGroupShown(group)" name="add-circle"></ion-icon>
+    <ion-icon *ngIf="isGroupShown(group)" name="remove-circle"></ion-icon>
+      &nbsp;
+        {{group.name}} 
+        
+      <ion-row *ngFor="let item of group.items">
+        
+          
+        <ion-col style="max-width: 10vw;" 
+          *ngIf="isGroupShown(group)">
+          <ion-checkbox  slot="end" [(ngModel)]="item.isChecked"></ion-checkbox>
+        </ion-col>
+        
+        <ion-col style="display: flex!important; align-content: center!important; align-items: center!important;" 
+          *ngIf="isGroupShown(group)" (click)="todoItemClicked(item)"> 
+          <h3>{{item.value}}</h3>
+        </ion-col>
+        
+      </ion-row>
+
+    </ion-item>
+  </ion-list> 
+
+</ion-content>

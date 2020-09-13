@@ -1,0 +1,119 @@
+
+  
+<!-- Generated template for the EventVoteOverlayComponent component -->
+<ion-content  class="has-header">
+
+    <!-- Title area + Add date option button -->
+    <ion-grid>
+    <ion-title text-align-center class="title-title-label">{{"EVENT_DETAILS.LABELS.ADD_VOTE_TITLE" | translate}}</ion-title>
+    
+    <ion-row>
+      <p class="justify" style="font-size: small;margin-left: 2vw;margin-right: 2vw;">
+        Wenn ihr ein Datum für eure Veranstaltung finden wollt kannst du als Organisator hier einige mögliche Termine erstellen. Über diese kann dann jeder Nutzer abstimmen. Das Datum an dem die Veranstaltung stattfinden soll kannst du anschließend hier auf "fix" setzen. 
+      </p>
+    </ion-row> 
+    <ion-row *ngIf="!addClicked && !view.fixedDate">
+        <ion-col style= "top:0vh;">
+          <button (click)="addDateOptionClicked()" class="add-date-button" ion-button text-uppercase>{{"EVENT_DETAILS.LABELS.ADD_VOTE_ADD_OPTION_BUTTON" | translate}}</button>
+        </ion-col>
+        <ion-col > 
+            <button (click)="_editButtonClicked()" class="edit-button-nav" ion-button icon-only>
+                <ion-icon *ngIf="!view.fixedDate" name="create"></ion-icon>
+            </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="addClicked && !view.fixedDate">
+          <ion-label class="add-date-choose-date-label">{{"EVENT_DETAILS.LABELS.ADD_VOTE_ADD_OPTION_CLICK" | translate}}</ion-label>
+          <ion-datetime (ionChange) = "choseEventDone()" displayFormat="DDD. MMM DD, YYYY HH:mm" max="2100-06-06" day-short-names="Mon, Die, Mit, Don, Fre, Sam, Son" [(ngModel)]="eventSpecsBox.addDateChosen" ></ion-datetime>
+        </ion-row>
+        <ion-row>
+          <button *ngIf="addClicked" (click)="cancelAddOptionClicked()"  ion-button full text-uppercase>Auswahl abbrechen</button>
+        </ion-row>
+
+
+
+      <!-- List of Date Options -->
+    <ion-row style="margin-top:0vh">
+    <ion-scroll style="height:100vh;width:110vw;margin-left:-5vw;" scrollY="true" direction="y" >
+    <ion-list style="margin-top:0.0vw;" >
+      
+            
+          <!-- <ion-item-sliding style="margin-left:-2vw;">  -->
+            <ion-item *ngIf="!view.fixedDate">
+              
+                  <ion-card class = "vote-option-card" *ngFor="let attendItem of _sortedOptions(attendOptions)">
+                    <ion-row *ngIf="_isValid(attendItem.date)">
+
+                        <!-- On DELETE -->
+                        <ion-col *ngIf="deleteShown" style="margin-left:3vw;margin-top:0vw;">
+                            <ion-icon  style="font-size:5vh" name="trash" (click) = "deleteOptionClicked(attendItem)"></ion-icon>
+                          </ion-col>
+                      
+                      <ion-col (click) = expandParticipantsClicked(attendItem)>
+                          <ion-row style="font-size:medium;">{{_dateExtractString(attendItem.date)}}</ion-row>  
+                          <ion-row>{{_timeExtractString(attendItem.date)}}</ion-row>  
+                      </ion-col>
+  
+                      <ion-col (click) = expandParticipantsClicked(attendItem)>
+                          <ion-row>{{attendItem.nrIn}}<ion-icon style="margin-left:2vw;" name="checkmark-circle"></ion-icon></ion-row>
+                          <ion-row>{{attendItem.nrUnsure}}<ion-icon style="margin-left:2vw;" name="contrast"></ion-icon></ion-row>
+                          <ion-row>{{attendItem.nrOut}}<ion-icon style="margin-left:2vw;" name="close-circle"></ion-icon></ion-row>
+                      </ion-col>
+
+
+                      <!-- On NO DELETE -->
+                      <ion-col *ngIf="!deleteShown" style="margin-left:0vw;">
+                        <ion-item style="width:40vw;"  no-lines>
+                          <ion-select [(ngModel)]="attendItem.fixedSelection" (ionChange)="selectionChanged(attendItem)" interface="popover" class="select"  style="max-width: 100%;" >
+                              <ion-option  value="fixed" selected="attendItem.fixedSelection=='fixed'">fixes Datum</ion-option>
+                              <ion-option value="open" selected="attendItem.fixedSelection == 'open'">offen</ion-option>
+                          </ion-select>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="dateDetailsSelectedDate==attendItem.date">
+                      <date-information [activeHeader] = "dateDetailsShowHeader" [show] = "dateDetailsShowOverlay" [_sarvoContactsIn] = "dateDetailsSarvoContactsIn" [_sarvoContactsMaybe] = "dateDetailsSarvoContactsMaybe" [_sarvoContactsOut] = "dateDetailsSarvoContactsOut" [_dateString] = "dateDetailsDate" [_dayString] = "dateDetailsDay" [_timeString] = "dateDetailsTime" ></date-information>
+                    </ion-row>
+                  </ion-card>
+            </ion-item>
+
+            <ion-item *ngIf="view.fixedDate">
+              <!-- (allFixed && attendItem.fixedSelection == 'fixed') || (!allFixed)-->
+              <ion-card class = "vote-option-card">
+                <ion-row >
+                  <ion-col style="margin-left:3vw;"  (click) = expandParticipantsClicked(eventSpecsBox.fixedAttendOption)>
+                      <ion-row style="font-size:medium;">{{_dateExtractString(eventSpecsBox.fixedAttendOption.date)}}</ion-row>  
+                      <ion-row>{{_timeExtractString(eventSpecsBox.fixedAttendOption.date)}}</ion-row>  
+                  </ion-col>
+
+                  <ion-col  (click) = expandParticipantsClicked(eventSpecsBox.fixedAttendOption)>
+                      <ion-row>{{eventSpecsBox.fixedAttendOption.nrIn}}<ion-icon style="margin-left:2vw;" name="checkmark-circle"></ion-icon></ion-row>
+                      <ion-row>{{eventSpecsBox.fixedAttendOption.nrUnsure}}<ion-icon style="margin-left:2vw;" name="contrast"></ion-icon></ion-row>
+                      <ion-row>{{eventSpecsBox.fixedAttendOption.nrOut}}<ion-icon style="margin-left:2vw;" name="close-circle"></ion-icon></ion-row>
+                  </ion-col>
+
+                  <ion-col style="margin-left:0vw;">
+                    <ion-item style="width:40vw;" no-lines>
+                      <ion-select [(ngModel)]="eventSpecsBox.fixedAttendOption.fixedSelection" (ionChange)="selectionChanged(eventSpecsBox.fixedAttendOption)"   style="max-width: 100%;" interface="popover" class="select" >
+                          <ion-option value="fixed" selected="eventSpecsBox.fixedAttendOption.fixedSelection=='fixed'">fixes Datum</ion-option>
+                          <ion-option value="open" selected="eventSpecsBox.fixedAttendOption.fixedSelection == 'open'">offen</ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-col>
+                </ion-row> 
+                <ion-row *ngIf="dateDetailsSelectedDate==eventSpecsBox.fixedAttendOption.date">
+                  <date-information [activeHeader] = "dateDetailsShowHeader" [show] = "dateDetailsShowOverlay" [_sarvoContactsIn] = "dateDetailsSarvoContactsIn" [_sarvoContactsMaybe] = "dateDetailsSarvoContactsMaybe" [_sarvoContactsOut] = "dateDetailsSarvoContactsOut" [_dateString] = "dateDetailsDate" [_dayString] = "dateDetailsDay" [_timeString] = "dateDetailsTime" ></date-information>
+                </ion-row>
+              </ion-card>
+        </ion-item> 
+
+        </ion-list>
+      </ion-scroll> 
+      </ion-row>
+    </ion-grid>
+    </ion-content>
+
+    <ion-footer no-border>
+        <button ion-button full   (click) = "doneClicked()"  text-uppercase>{{"EVENT_DETAILS.LABELS.ADD_VOTE_DONE_BUTTON" | translate}}</button>
+    </ion-footer>

@@ -1,0 +1,74 @@
+<!--
+  Generated template for the GroupsOverviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{"GROUP_MGMT.LABELS.TITLE" | translate}}
+        <!-- <img alt="logo" height="40" src="../../assets/imgs/sarvo_icon.png" style="float:right;align-self: right;" >  -->
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  
+
+  <button ion-button outline item-right (click)='isManageGroups = !isManageGroups' *ngIf="hasGroups()">
+    <ion-icon name="create" item-end></ion-icon>
+  </button>
+
+  <!--
+  <ion-list>
+
+    <ion-item (click)="detailGroupClicked(group)" *ngFor="let group of _groups">
+      <ion-avatar item-start>
+        <img src={{group.imageBase64}}>
+      </ion-avatar>
+      <ion-icon *ngIf='isManageGroups' name="trash" item-end (click)="removeGroupClicked(group)"></ion-icon>
+      <h2>{{group.name}}</h2>
+      <p>{{group.description}}</p>
+    </ion-item>
+
+  </ion-list>
+  <ion-scroll class="group-scroll">
+    <span *ngFor='let group of _groups' class="group" (click)='detailGroupClicked(group)'>
+
+        <img src="{{group.imageBase64}}" class="groups-overview-pic">
+        <ion-icon *ngIf='isManageGroups' name="trash" item-end (click)="removeGroupClicked(group)" class="group-trash"></ion-icon>
+        <p class="groups-overview-pic-text">{{group.name}}</p>
+
+    </span>
+  </ion-scroll> -->
+
+  <ion-grid padding>
+    <ion-row class="group-row">
+      <ion-col *ngFor='let group of _groups' class="group-col" (click)='detailGroupClicked(group)' col-3>
+        <ion-row class="row-img">
+            <img *ngIf="group.imagePreviewBase64.length >= 50" src="{{group.imagePreviewBase64}}" class="groups-overview-pic">
+            <img *ngIf="group.imagePreviewBase64.length < 50" src="{{basicImage}}" class="groups-overview-pic">
+          <ion-icon *ngIf='isManageGroups' name="trash" (click)="removeGroupClicked(group)" class="group-trash"></ion-icon>
+        </ion-row>
+        <ion-row text-center>
+          <ion-label text-center>{{group.name}}</ion-label>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="this._groups.length == 0">
+      <p class="justify" style="font-size: medium">
+        Du kannst hier Gruppen erstellen, mit denen du öfter Veranstaltungen machen möchtest. Erstelle die Gruppe einfach über "+" und füge S'arvo Mitglieder hinzu. Anschließend kannst du die Gruppe bei jeder Veranstaltung im Reiter "Gruppen" hinzufügen. 
+      </p>
+    </ion-row> 
+
+  </ion-grid>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="addGroupClicked()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

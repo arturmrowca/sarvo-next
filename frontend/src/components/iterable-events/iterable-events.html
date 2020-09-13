@@ -1,0 +1,78 @@
+<!-- Generated template for the IterableEventsComponent component -->
+<ion-row *ngFor ="let eventEntry of events;let i=index">
+    <ion-col *ngIf ="i % 2 == 0 && i < maximalIndex" style="width:50%"> <!-- Entry i if even further down i+1 if i+1 exists-->
+        <ion-card style="border-radius: 5px !important;font-family:Roboto;height:34vh;width:95%;margin:0px;">
+            <ion-row style="height:5vh;" > 
+              <ion-col float-left  (click) = "starClicked(events[i])">
+                  <ion-icon *ngIf = "!events[i].starChosen" style="font-size: 4vh;margin-right:5px; margin-bottom:-0.5vh;" name="star"></ion-icon>
+                  <ion-icon *ngIf = "events[i].starChosen" style="font-size: 4.5vh;margin-right:5px; margin-bottom:-0.5vh;color:gold;" name="star"></ion-icon>
+              </ion-col>
+              <!-- ion-col float-right>
+                  <ion-icon  float-right text-end  style="left:2vw;font-size: 4vh;margin-right:5px; margin-bottom:-0.5vh; " name="options" (click) = "selectClicked()"></ion-icon>
+              </ion-col --> 
+          </ion-row > 
+            <ion-grid>
+              <ion-row (click) = "showDetailedDescription(events[i])"> 
+                <div>
+                  <img  src="{{events[i].image}}" style="margin-left:0px;width:100%;height:auto;max-height:18vh;">
+                </div>
+              </ion-row>
+            <div  (click) = "showDetailedDescription(events[i])"> 
+              <ion-row >  
+                  <ion-label style="position:absolute;bottom:5.7vh; left:3vw; margin-bottom:0px; font-size:2.0vh;font-weight: bold;max-height:4.8vh;margin-right:13%;" text-wrap>{{events[i].title}}</ion-label>
+              </ion-row>
+              <ion-row>
+                  <ion-label style="position:absolute;bottom:0.0vh; left:3vw; color:#f18f01;font-weight: bold;margin-top:5px; font-size:1.8vh;max-height:2.5vh " text-wrap>{{_showDate(events[i].date)}}</ion-label>
+              </ion-row>
+            </div>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+<ion-col *ngIf ="i % 2 == 0 && events.length > i + 1  && i+1 < maximalIndex" style="width:50%;max-width:49vw;"> <!-- Check if i+1 exists-->
+    <ion-card style="max-width:49vw;border-radius: 5px !important;font-family:Roboto;height:34vh;width:95%;margin:0px;">
+        <ion-row style="height:5vh;" > 
+          <ion-col float-left (click) = "starClicked(events[i+1])">
+              <ion-icon *ngIf = "!events[i+1].starChosen" style="font-size: 4vh;margin-right:5px; margin-bottom:-0.5vh;" name="star"></ion-icon>
+              <ion-icon *ngIf = "events[i+1].starChosen" style="font-size: 4.5vh;margin-right:5px; margin-bottom:-0.5vh;color:gold;" name="star"></ion-icon>
+            </ion-col>
+          <!--ion-col float-right >
+              <ion-icon  float-right text-end  style="left:2vw;font-size: 4vh;margin-right:5px; margin-bottom:-0.5vh; " name="options" (click) = "selectClicked()"></ion-icon>
+          </ion-col DAS SIND DIE OPTIONEN UNTEN IST ZWEITER TEIL AUSKOMMENTIERT--> 
+      </ion-row> 
+
+        <ion-grid>
+          <ion-row (click) = "showDetailedDescription(events[i+1])"> 
+            <div>
+              <img  src="{{events[i+1].image}}" style="margin-left:0px;width:100%;height:auto;max-height:18vh;">
+            </div>
+          </ion-row>
+        <div  (click) = "showDetailedDescription(events[i+1])"> 
+          <ion-row >  
+              <ion-label style="position:absolute;bottom:5.7vh; left:3vw; margin-bottom:0px; font-size:2.0vh;font-weight: bold;max-height:4.8vh;margin-right:13%;" text-wrap>{{events[i+1].title}}</ion-label>
+          </ion-row>
+          <ion-row>
+              <ion-label style="position:absolute;bottom:0.0vh; left:3vw; color:#f18f01;font-weight: bold;margin-top:5px; font-size:1.8vh;max-height:2.5vh " text-wrap>{{_showDate(events[i+1].date)}}</ion-label>
+          </ion-row>
+        </div>
+      </ion-grid>
+    </ion-card>
+  </ion-col>
+</ion-row>
+<!-- ion-row *ngIf ="events.length > maximalIndex" --> 
+<ion-row  > 
+  <ion-col>
+    <button  ion-button full (click) = "closeAll()"> Schließen...</button>
+  </ion-col>
+  <ion-col *ngIf="!hideShowMore">
+    <button   ion-button full (click) = "showMore()"> Mehr...</button>
+  </ion-col>
+</ion-row>
+<ion-row style="width:0px;height:0px">
+  <ion-item>
+  <!-- ion-select   #mySelect  [(ngModel)]="choice" interface="action-sheet" >
+      <ion-option value="friends">Freunden empfehlen</ion-option>
+      <ion-option value="auto">Automobile</ion-option>
+      <ion-option value="sepp">Cellphones</ion-option> 
+  </ion-select -->
+</ion-item>
+</ion-row>

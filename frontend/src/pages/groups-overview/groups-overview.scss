@@ -1,0 +1,48 @@
+page-groups-overview {
+  .toolbar-title-ios {
+    font-family:Roboto;
+    }
+  
+    .toolbar-title-md {
+    font-family:Roboto;
+    }
+  .group-row {
+  }
+
+  .group-col {
+  }
+
+  .row-img {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .groups-overview-pic {
+    height: 20vw;
+    width: 20vw;
+    -webkit-border-radius: 50%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .row-name {
+    padding: 15%;
+    display: flex;
+    font-size: larger;
+    align-content: center;
+    height: 3vw;
+    color: gray;
+    justify-content: center;
+  }
+
+  .group-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .group-trash {
+    position: absolute;
+    font-size: 8vw;
+  }
+}

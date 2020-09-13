@@ -1,0 +1,101 @@
+
+  
+<!-- Generated template for the EventVoteOverlayComponent component -->
+<ion-content >
+    <ion-grid>
+
+  <ion-title class="title-title-label" text-align-center>{{"EVENT_DETAILS.LABELS.EVENT_VOTE_TITLE" | translate}}</ion-title>
+  <ion-row>
+    <p class="justify" style="font-size: small;margin-left: 2vw;margin-right: 2vw;">
+      Der Organisator hat mehrere optionale Termine festgelegt. Stimme hier ab an welchem du Zeit hast! 
+    </p>
+  </ion-row> 
+  <ion-row >
+  <ion-scroll style="height:100vh;width:110vw;margin-left:-5vw;" scrollY="true" direction="y" >
+    <ion-list style="margin-top:0vw;overflow-y: hidden;" >
+      
+        <!--<ion-item-sliding style="margin-left:-2vw;">   *ngFor="let country of countries">-->
+          <ion-item *ngIf='!isFixed'>
+
+              <ion-card  class = "vote-option-card" *ngFor="let attendItem of _sortedOptions(attendOptions)">
+                  <ion-row *ngIf="_isValid(attendItem.date)" >
+
+                    <ion-col (click) = expandParticipantsClicked(attendItem)>
+                        <ion-row style="font-size:medium;">{{_dateExtractString(attendItem.date)}}</ion-row>  
+                        <ion-row>{{_timeExtractString(attendItem.date)}}</ion-row>  
+                    </ion-col>
+
+                    <ion-col style="margin-left:3vw;" (click) = expandParticipantsClicked(attendItem)>
+                        <ion-row>{{attendItem.nrIn}}<ion-icon style="margin-left:2vw;" name="checkmark-circle"></ion-icon></ion-row>
+                        <ion-row>{{attendItem.nrUnsure}}<ion-icon style="margin-left:2vw;" name="contrast"></ion-icon></ion-row>
+                        <ion-row>{{attendItem.nrOut}}<ion-icon style="margin-left:2vw;" name="close-circle"></ion-icon></ion-row>
+                    </ion-col>
+                    
+                    <ion-col style="margin-left:0vw;width:40vw;">
+                      <ion-item style="width:40vw;" no-lines>
+                        <ion-select [(ngModel)]="attendItem.selection" (ionChange)="selectionChanged(attendItem)"  style="max-width: 80%;" interface="popover" class="select" >
+                            <ion-option  style="background:green" value="in" selected="attendOptionItem.userIn">Dabei</ion-option>
+                            <ion-option  style="background:white" value="maybe" selected="attendOptionItem.userUnsure">Vielleicht</ion-option>
+                            <ion-option  style="background:red" value="out" selected="attendOptionItem.userOut">Raus</ion-option>
+                        </ion-select>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>  
+
+                  <ion-row *ngIf="dateDetailsSelectedDate==attendItem.date">
+                    <date-information [activeHeader] = "dateDetailsShowHeader" [show] = "dateDetailsShowOverlay" [_sarvoContactsIn] = "dateDetailsSarvoContactsIn" [_sarvoContactsMaybe] = "dateDetailsSarvoContactsMaybe" [_sarvoContactsOut] = "dateDetailsSarvoContactsOut" [_dateString] = "dateDetailsDate" [_dayString] = "dateDetailsDay" [_timeString] = "dateDetailsTime" ></date-information>
+                  </ion-row>
+                </ion-card>
+
+          </ion-item>
+
+
+          <ion-item *ngIf='isFixed'>
+
+
+            <ion-card  class = "vote-option-card">
+              <ion-row *ngIf="_isValid(fixedAttendOption.date)" >
+
+                <ion-col style="margin-left:4vw;width:7vw;" (click) = expandParticipantsClicked(fixedAttendOption)>
+                    <ion-row style="font-size:medium;">{{_dateExtractString(fixedAttendOption.date)}}</ion-row>  
+                    <ion-row>{{_timeExtractString(fixedAttendOption.date)}}</ion-row>  
+                </ion-col>
+
+                <ion-col style="margin-left:3vw;" (click) = expandParticipantsClicked(fixedAttendOption)>
+                    <ion-row>{{fixedAttendOption.nrIn}}<ion-icon style="margin-left:2vw;" name="checkmark-circle"></ion-icon></ion-row>
+                    <ion-row>{{fixedAttendOption.nrUnsure}}<ion-icon style="margin-left:2vw;" name="contrast"></ion-icon></ion-row>
+                    <ion-row>{{fixedAttendOption.nrOut}}<ion-icon style="margin-left:2vw;" name="close-circle"></ion-icon></ion-row>
+                </ion-col>
+                
+                <ion-col style="margin-left:0vw;width:40vw;">
+                  <ion-item style="width:40vw;"no-lines>
+                    <ion-select [(ngModel)]="fixedAttendOption.selection" (ionChange)="selectionChanged(fixedAttendOption)"  style="max-width: 80%;" interface="popover" class="select" >
+                        <ion-option  style="background:green" value="in" selected="attendOptionItem.userIn">Dabei</ion-option>
+                        <ion-option  style="background:white" value="maybe" selected="attendOptionItem.userUnsure">Vielleicht</ion-option>
+                        <ion-option  style="background:red" value="out" selected="attendOptionItem.userOut">Raus</ion-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+              </ion-row>  
+              <ion-row style="width:100vw;" *ngIf="dateDetailsSelectedDate==fixedAttendOption.date">
+                <date-information style="width:100vw;" [activeHeader] = "dateDetailsShowHeader" [show] = "dateDetailsShowOverlay" [_sarvoContactsIn] = "dateDetailsSarvoContactsIn" [_sarvoContactsMaybe] = "dateDetailsSarvoContactsMaybe" [_sarvoContactsOut] = "dateDetailsSarvoContactsOut" [_dateString] = "dateDetailsDate" [_dayString] = "dateDetailsDay" [_timeString] = "dateDetailsTime" ></date-information>
+              </ion-row>
+            </ion-card>
+
+          
+          </ion-item>
+
+        
+      </ion-list>
+    </ion-scroll>
+    
+  </ion-row>
+
+  </ion-grid> 
+
+  </ion-content>
+
+  <ion-footer no-border>  
+        <button ion-button full  class="done-button" (click)="doneClicked()" text-uppercase>{{"EVENT_DETAILS.LABELS.EVENT_VOTE_DONE_BUTTON" | translate}}</button>    
+  </ion-footer>
+

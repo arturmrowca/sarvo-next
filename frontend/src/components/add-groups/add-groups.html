@@ -1,0 +1,27 @@
+<!-- Generated template for the AddGroupsComponent component -->
+
+<ion-scroll scrollX='true' class='ion-scroll' *ngIf=hasMembers(_groupArray) ion-fixed>
+  <span *ngFor='let member of _groupArray' class="member">
+    <img src="{{member.imagePreviewBase64}}" class="circle-pic-member">
+    <ion-icon name='close-circle' class="close-circle-member" (click)='onMemberClicked(member, _groupArray)'></ion-icon>
+    <p class="member-text">{{member.name}}</p>
+  </span>
+</ion-scroll>
+
+<ion-list>
+
+  <ion-item *ngFor="let group of _myGroups" (click)='onGroupClicked(group, _groupArray)'>
+
+    <ion-avatar item-start>
+      <span class="groups">
+        <img src="{{group.imagePreviewBase64}}" >
+        <ion-icon name='checkmark-circle' *ngIf="isMember(group, _groupArray)" class="checkmark-circle"></ion-icon>
+      </span>
+    </ion-avatar>
+
+    <h2>{{group.name}}</h2>
+    <p>{{group.description}}</p>
+
+  </ion-item>
+
+</ion-list>

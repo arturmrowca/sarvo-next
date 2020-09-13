@@ -1,0 +1,140 @@
+<!-- Generated template for the EventListComponent component -->
+<ion-content class="card-background-page">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" [enabled]="isRefresherEnabled()" pullFactor="0.1" pullMin="70">
+    <!-- ion-refresher-content
+     pullingIcon="arrow-up">
+    </ion-refresher-content -->
+    <ion-refresher-content >
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <loader *ngIf="loading"></loader>
+
+  <ion-slides #mySlider pager (ionSlideDidChange)="getSliderIdx()">
+    <ion-slide> 
+      <ion-scroll scrollY="true" #myScroll class="scroll-content">
+
+        
+          <ion-row *ngIf="this._eventsContent.length == 0 && !loading">
+            <p class="justify" style="font-size: medium">
+              Willkommen bei S'arvo! Hier kannst du eine Veranstaltung erstellen. So geht's:
+            </p>
+            <p style="text-align:left;font-size: small;margin-left: 2vw;margin-right: 2vw;">
+              1. Erstelle deine Veranstaltung auf "+".</p>
+            <p style="text-align:left; font-size: small;margin-left: 2vw;margin-right: 2vw;">
+              2. Gib ihr einen Namen und lade deine Freunde über dein Handyaddressbuch ein.</p>
+            <p style="text-align:left; font-size: small;margin-left: 2vw;margin-right: 2vw;">
+              3. Starte die Veranstaltung mit (i) festem Datum oder (ii) ohne Datum und finde später einen Termin.</p>  
+           
+            <p class="justify" style="font-size: medium">
+              oder merke dir die Veranstaltung einfach über "+"
+            </p>
+          </ion-row> 
+
+
+
+        <ion-card *ngFor="let event of getFixedEvents()" (click)=chosen(event)>
+          <ion-row class="row-card">
+          
+            <ion-col *ngIf="event.imagePreviewBase64.length >= 50" class="col-img" col-3>
+              <img src="{{event.imagePreviewBase64}}" class="card-img">
+          </ion-col>
+          <ion-col *ngIf="event.imagePreviewBase64.length < 50" class="col-img" col-3>
+            <img src="{{basicImage}}" class="card-img">
+          </ion-col>
+
+
+            <ion-col class="col-content" col-9>
+              <ion-row class="row-top">
+                <ion-col class="col-title" col-8>
+                  <div>{{event.name}}</div>
+                </ion-col>
+                <ion-col class="col-time" col-4>
+                  <div>{{getRemainingTime(event)}}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="row-bottom">
+                <ion-col></ion-col>
+                <ion-col class="col-message" col-8>
+                  <div>
+                    <ion-icon name="chatbubbles" clear icon-only color="primary" small></ion-icon>
+                    <label >{{getMessages(event)}}</label>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+        <ion-row>
+          <p class="justify" style="font-size: medium">
+            Swipe rechts, um Veranstaltungen zu sehen, die noch keinen Termin haben!
+          </p>
+        </ion-row> 
+      </ion-scroll>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-scroll scrollY="true" #myScroll class="scroll-content">
+
+        <ion-row *ngIf="this._eventsContent.length == 0 && !loading">
+          <p class="justify" style="font-size: medium">
+            Willkommen bei S'arvo! Hier kannst du eine Veranstaltung erstellen. So geht's:
+          </p>
+          <p style="text-align:left; font-size: small;margin-left: 2vw;margin-right: 2vw;">
+            1. Erstelle deine Veranstaltung auf "+".</p>
+          <p style="text-align:left; font-size: small;margin-left: 2vw;margin-right: 2vw;">
+            2. Gib ihr einen Namen und lade deine Freunde über dein Handyaddressbuch ein.</p>
+          <p style="text-align:left; font-size: small;margin-left: 2vw;margin-right: 2vw;">
+            3. Starte die Veranstaltung mit (i) festem Datum oder (ii) ohne Datum und finde später einen Termin.</p>
+  
+          <p class="justify" style="font-size: medium">
+            oder merke dir die Veranstaltung einfach über "+"
+          </p>
+        </ion-row> 
+        
+
+        <ion-card *ngFor="let event of getPendingEvents()" (click)=chosen(event)>
+          
+          <ion-row class="row-card">
+            <ion-col *ngIf="event.imagePreviewBase64.length >= 50" class="col-img" col-3>
+              <img src="{{event.imagePreviewBase64}}" class="card-img">
+            </ion-col>
+            <ion-col *ngIf="event.imagePreviewBase64.length < 50" class="col-img" col-3>
+              <img src="{{basicImage}}" class="card-img">
+            </ion-col>
+            
+            <ion-col class="col-content" col-9>
+              <ion-row class="row-top">
+                <ion-col class="col-title" col-8>
+                  <div>{{event.name}}</div>
+                </ion-col>
+                <ion-col class="col-time" col-4>
+                  <div>{{getRemainingTime(event)}}</div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="row-bottom">
+                <ion-col></ion-col>
+                <ion-col class="col-message" col-8>
+                  <div>
+                    <ion-icon name="chatbubbles" clear icon-only color="primary" small></ion-icon>
+                    <label >{{getMessages(event)}}</label>
+                  </div>
+                </ion-col>
+
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+      <ion-row>
+        <p class="justify" style="font-size: medium">
+          Swipe links, um Veranstaltungen zu sehen, die schon terminiert sind!
+        </p>
+      </ion-row> 
+
+      </ion-scroll>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

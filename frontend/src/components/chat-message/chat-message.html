@@ -1,0 +1,14 @@
+<!-- Generated template for the ChatMessageComponent component -->
+
+<li class="clearfix chat-message">
+  <div class="message-data" [class.align-right]="message_is_from_own_user" [class.align-left]="!message_is_from_own_user">
+    <span class="message-data-time">{{display_time}}</span>
+    <span class="message-data-name">{{display_name}}</span> <i class="fa fa-circle me"></i>
+  </div>
+
+  <div [innerHtml]="message.text" class="message float-right" id="grad1"
+       [class.other-message]="message_is_from_own_user"
+       [class.float-right]="message_is_from_own_user"
+       [class.my-message]="!message_is_from_own_user" style="user-select: text; pointer-events: auto;overflow:scroll;-moz-user-select: text !important; -webkit-user-select: text !important;-ms-user-select: text !important;">
+  </div>
+</li>

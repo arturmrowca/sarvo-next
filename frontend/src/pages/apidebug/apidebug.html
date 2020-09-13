@@ -1,0 +1,150 @@
+<!--
+  Generated template for the ApidebugPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>apidebug</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-divider color="light">
+      Login (to obtain Token)
+    </ion-item-divider>
+    <button ion-button (click)="SendLogin()" class="center">
+      <p>Send login request</p>
+      <ion-icon *ngIf="login_state == 1" ios="ios-checkmark" md="md-checkmark"></ion-icon>
+      <ion-icon *ngIf="login_state == 2" ios="ios-close" md="md-close"></ion-icon>
+    </button>
+    <pre>
+      {{login_result}}
+    </pre>
+
+    <ion-item-divider color="light">
+      Execute arbitrary API Call
+    </ion-item-divider>
+    <ion-list-header>
+      Select Endpoint
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Endpoint</ion-label>
+      <ion-select #flagSelect
+                  [(ngModel)]="selectedEndpoint"
+                  (ionChange)="selectEndpoint()">
+        <ion-option *ngFor="let endpoint of endpoints" [value]="endpoint">
+          {{endpoint.url}}, type {{endpoint.type}}
+          <ion-icon *ngIf="endpoint.supported == false" name="bug"></ion-icon>
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-list-header>
+      Endpoint URL
+    </ion-list-header>
+
+    <ion-item *ngIf="selectedEndpoint">
+      <ion-label fixed>URL</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="selectedEndpoint.url"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="selectedEndpoint==null">
+      <ion-label fixed>URL</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="selectedEndpoint.url"></ion-input>
+    </ion-item>
+
+
+    <ion-list-header>
+      Endpoint payload
+    </ion-list-header>
+
+    <ion-item>
+      <ion-grid>
+        <ion-row *ngFor="let item of getOptionMapValues(); let i = index" >
+          <ion-col col-2>
+            {{item[0]}}
+          </ion-col>
+          <ion-col col-2>
+            {{item[1]}}
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button (click)="removeOptionFromMap(item[0])">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-grid item-content>
+          <ion-row>
+            <ion-col col-2>
+              <ion-input type="text" placeholder="New key" [(ngModel)]="newKey"></ion-input>
+            </ion-col>
+            <ion-col col-2>
+              <ion-input type="text" placeholder="New value" [(ngModel)]="newValue"></ion-input>
+            </ion-col>
+            <ion-col col-2>
+              <button ion-button (click)="addOptionToMap(newKey, newValue)">
+                <ion-icon name="add-circle"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+    </ion-item>
+
+    <button ion-button (click)="SendRequest(selectedEndpoint)" class="center">
+      <p>Send request</p>
+      <ion-icon *ngIf="request_state == 1" ios="ios-checkmark" md="md-checkmark"></ion-icon>
+      <ion-icon *ngIf="request_state == 2" ios="ios-close" md="md-close"></ion-icon>
+    </button>
+
+    <ion-item>
+      <pre>{{request_response | json}}</pre>
+    </ion-item>
+
+
+    <ion-item-divider color="light">
+      Test all endpoints
+    </ion-item-divider>
+    <button ion-button (click)="testAll()" class="center">
+      <p>Start Test</p>
+    </button>
+    <ion-grid>
+      <ion-row >
+        <ion-col col-4>
+          Request
+        </ion-col>
+        <ion-col col-1>
+          Status
+        </ion-col>
+        <ion-col col-7>
+          Message
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let ep of testResults" >
+        <ion-col col-4>
+          {{ep.type}} {{ep.url}}
+        </ion-col>
+        <ion-col col-1>
+          {{ep.result}}
+        </ion-col>
+        <ion-col col-7>
+          <pre>{{ep.resultMessage}}</pre>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+
+</ion-content>

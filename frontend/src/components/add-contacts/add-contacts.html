@@ -1,0 +1,75 @@
+<!-- Generated template for the AddContactsComponent component -->
+<ion-toolbar>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+</ion-toolbar>
+
+<ion-row justify-content-center>
+  <button class="center-button" ion-button round text-uppercase (click)="syncContactsClicked()">Kontakte synchronisieren</button>
+</ion-row>
+
+<ion-scroll scrollX='true' class='ion-scroll' *ngIf=hasMembers(_membersArray) ion-fixed>  
+  <span *ngFor='let member of _membersArray' class="member">
+    <img src="{{member.profilePicturePreviewBase64}}" class="circle-pic-member">
+    <ion-icon name='close-circle' class="close-circle-member" (click)='onMemberClicked(member, _membersArray)'></ion-icon>
+    <p class="member-text">{{mapMemberName(member)}}</p>
+  </span>
+</ion-scroll>
+
+<loader *ngIf="_loading"></loader>
+
+
+<ion-item-divider>
+  <ion-label>
+    Sarvo Contacts.
+  </ion-label>
+</ion-item-divider>
+<ion-list *ngIf="!_loading" class="contacts-list">
+
+  <ion-item  *ngFor="let item of onlyRegistered(this._sarvoContactsSearch, true)" (click)='onContactClicked(item, _membersArray)'>
+     
+    <ion-avatar  item-start >
+        <span class="contacts">
+          <img src="{{item.profilePicturePreviewBase64}}">
+          <ion-icon name='checkmark-circle' *ngIf="isMember(item, _membersArray)" class="checkmark-circle"></ion-icon>
+        </span>
+      </ion-avatar>
+      <h2>{{item.username}}</h2>
+      <p>{{item.phonenumber}}</p>
+  </ion-item>
+</ion-list>
+
+<ion-item-divider>
+    <ion-label>
+      Non-Sarvo Contacts.
+    </ion-label>
+</ion-item-divider>
+<ion-list *ngIf="!_loading" class="contacts-list">
+
+  <ion-item  *ngFor="let item of onlyRegistered(this._sarvoContactsSearch, false)" (click)='onContactClicked(item, _membersArray)'>
+     
+    <ion-avatar  item-start >
+        <span class="contacts">
+          <img src="{{item.profilePicturePreviewBase64}}">
+          <ion-icon name='checkmark-circle' *ngIf="isMember(item, _membersArray)" class="checkmark-circle"></ion-icon>
+        </span>
+      </ion-avatar>
+      <h2>{{item.username}}</h2>
+      <p>{{item.phonenumber}}</p>
+  </ion-item>
+</ion-list>
+<!--
+<ion-list *ngIf="!_loading" class="contacts-list">
+
+  <ion-item *ngFor="let item of this._noSarvoContacts" (click)='onContactClicked(item, _membersArray)'>
+    <ion-avatar item-start>
+      <span class="contacts">
+        <img src="{{item.profilePicturePreviewBase64}}">
+        <ion-icon name='checkmark-circle' *ngIf="isMember(item, _membersArray)" class="checkmark-circle"></ion-icon>
+      </span>
+    </ion-avatar>
+    <h2>{{item.username}}</h2>
+    <p>{{item.phonenumber}}</p>
+  </ion-item>
+
+</ion-list>
+-->

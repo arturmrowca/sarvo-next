@@ -1,0 +1,26 @@
+page-event-create {
+    $create-font:Franklin Gothic Thin,sans-serif;
+
+    .toolbar-title-ios {
+        font-family:Roboto;
+    }
+      
+        .toolbar-title-md {
+        font-family:Roboto;
+    }
+
+    .create-button{
+        background:color($colors, primary, base);
+        color:color($colors, sarvo-white, base);
+        font-family:$create-font;
+            font-size:5vw;
+            top:2vh;
+            margin:0 auto;
+            display:block;
+            height:7vh;
+            width:100%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+    }
+}

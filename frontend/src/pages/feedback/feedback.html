@@ -1,0 +1,51 @@
+<!--
+  Generated template for the FeedbackPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Feedback?
+        <img alt="logo" height="40" src="../../assets/imgs/sarvo_icon.png" style="float:right;align-self: right;" > 
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2>{{"FEEDBACK.TEXTS.WELCOME_HEADLINE" | translate}}</h2>
+  <form [formGroup]="_feedbackGroup" (ngSubmit)="onSendClicked(_feedbackGroup)">
+
+    <ion-label padding stacked color="primary">{{"FEEDBACK.LABELS.RATING" | translate}}</ion-label>
+    <rating formControlName="rating" small="false"></rating>
+
+    <ion-item>
+      <ion-label stacked color="primary">{{"FEEDBACK.LABELS.CATEGORY" | translate}}</ion-label>
+
+      <ion-select formControlName="category" placeholder="{{'FEEDBACK.TEXTS.PL_CATEGORY' | translate}}">
+        <ion-option *ngFor="let item of _categoryDummy" value="{{item.value}}">{{item.name}}</ion-option>
+      </ion-select>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked color="primary">{{"FEEDBACK.LABELS.FB_TEXT" | translate}}</ion-label>
+      <ion-textarea type="text" rows='4' formControlName="text" placeholder="{{'FEEDBACK.TEXTS.PL_TEXT' | translate}}"></ion-textarea>
+    </ion-item>
+
+    <button ion-button center type="submit" [disabled]="!_feedbackGroup.valid">{{"FEEDBACK.BUTTONS.SEND" | translate}}</button>
+  </form>
+
+
+  <!-- 
+  <pre>{{_feedbackGroup.value['category'] | json}}</pre>
+  <pre>{{_feedbackGroup.value['text'] | json}}</pre>
+  <pre>{{_feedbackGroup.value['rating'] | json}}</pre>
+
+  <pre>{{_result | json}}</pre>-->
+
+</ion-content>

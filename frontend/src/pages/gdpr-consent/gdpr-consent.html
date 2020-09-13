@@ -1,0 +1,75 @@
+<!--
+  Generated template for the GdprConsentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Erklärung</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <img src="../../assets/imgs/sarvo_icon_512.png" alt="" class="center" height="128" width="128">
+    </ion-row>
+    <ion-row style="height: 2rem"></ion-row>
+    
+
+    <ion-list *ngFor='let passage of contentList'>
+      
+      <ion-row *ngIf="passage[0][0]"><!-- Header 1 -->
+        <h1>
+        {{passage[0][1]}}</h1>
+      </ion-row>
+
+      <ion-row *ngIf="passage[1][0]"><!-- Header 2 -->
+        <h2>{{passage[1][1]}}</h2>
+      </ion-row>
+      <ion-row *ngIf="passage[2][0]"><!-- Header 3 -->
+      <h3>{{passage[2][1]}} </h3>
+      </ion-row>
+  
+      <ion-row *ngIf="passage[3][0]"><!-- Text -->
+        {{passage[3][1]}} 
+      </ion-row>
+
+    </ion-list>
+    <ion-row *ngIf = "contentList.length != 0"><!-- Header 1 -->
+      <h1>
+      Bestätigung</h1>
+    </ion-row>
+    <ion-row *ngIf = "contentList.length != 0">
+      Hiermit stimme ich den oben genannten Datenschutzbestimmungen und den oben genannten Nutzungsbedingungen zu. 
+      <ion-checkbox (ngModelChange)="changedConsent()" [(ngModel)]="consentGiven"></ion-checkbox>
+    </ion-row>
+    <ion-row *ngIf = "contentList.length == 0">
+      Die Verordnung wird geladen... Sollte die Erklärung nicht angezeigt werden  prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut. 
+    </ion-row>
+
+    <ion-row *ngIf = "contentList.length != 0"  center>
+      <ion-col  text-center>
+        <button *ngIf="!justLeave" ion-button round color="primary" (click)="leaveScreenCheckConsent()">
+          Bestätigen 
+          </button>
+          <button *ngIf="!justLeave" ion-button round color="primary" (click)="doNotConsent()">
+            Ablehnen 
+            </button>
+          <button *ngIf="justLeave" ion-button round color="primary" (click)="leaveScreen()">
+            Bestätigen 
+            </button>
+      </ion-col>
+    </ion-row>
+    
+    <!-- ion-row  center>
+      <ion-col text-center>
+        <button ion-button round color="primary" (click)="doNotConsent()">
+        Ablehnen 
+        </button>
+      </ion-col>
+    </ion-row -->
+  </ion-grid>
+</ion-content>

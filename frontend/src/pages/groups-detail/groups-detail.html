@@ -1,0 +1,78 @@
+<!--
+  Generated template for the GroupsDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{_group.name}}
+        <!-- <img alt="logo" height="40" src="../../assets/imgs/sarvo_icon.png" style="float:right;align-self: right;" > -->
+    </ion-title>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row class="ion-row-edit">
+      
+      
+        <img *ngIf="_group.imageBase64.length >= 50" (click)="_onImageClicked()" src="{{_group.imageBase64}}" class="circle-pic center">
+        <img *ngIf="_group.imageBase64.length < 50" (click)="_onImageClicked()" src="{{basicImage}}" class="circle-pic center">
+
+      <ion-row class='changepic-row'>
+          <ion-icon *ngIf="_changePic" (click)="changeProfilePicture(1)" name="camera"></ion-icon>
+          <ion-icon *ngIf="_changePic" (click)="changeProfilePicture(0)" name="photos" style="padding-left:3%"></ion-icon>
+      </ion-row>
+    </ion-row>
+
+    <ion-row class="ion-row-edit">
+     {{_group.description}}
+    </ion-row>
+
+    <ion-row  class="ion-row-edit">
+      <button ion-button outline={{_editDescr}} round class="center-button" *ngIf="_amAdmin" (click)="changeTitleClicked()">
+        Umbenennen
+      </button>
+      <button ion-button outline={{_editDescr}} round class="center-button" *ngIf="_amAdmin" (click)="changeDescrClicked()">
+        {{'GROUP_MGMT.BUTTONS.CHANGE_DESCRIPTION' | translate}}
+      </button>
+      
+    </ion-row>
+
+    <!-- <ion-row>
+      <ion-list>
+
+        <ion-item>
+          <ion-label>Some setting 1 (e.g. mute group)</ion-label>
+          <ion-toggle [(ngModel)]="setting1"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Some setting 2</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-row>-->
+
+
+    <ion-row nowrap class="ion-scroll-float">
+      <ion-col *ngFor='let member of _memberArray' class="group-member" no-margin>
+        <img src="{{member.profilePictureBase64}}" class="circle-pic-member">
+        <p class="member-text">{{member.username}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-row-change-mem">
+      <button ion-button round class="center-button" (click)="editGroupClicked()" *ngIf='_amAdmin'>
+        {{'GROUP_MGMT.BUTTONS.CHANGE_MEMBERS' | translate}}
+      </button>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

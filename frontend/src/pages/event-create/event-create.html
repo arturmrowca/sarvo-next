@@ -1,0 +1,58 @@
+<!--
+  Generated template for the EventCreatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ "EVENT_CREATE.LABELS.TITLE" | translate}}
+       <!-- <img alt="logo" height="40" src="../../assets/imgs/sarvo_icon.png" style="float:right;align-self: right;" > -->
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<loader *ngIf="loading"></loader>
+
+<ion-content *ngIf="!loading" padding>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" stacked>{{ "EVENT_CREATE.LABELS.EVENT_NAME" | translate}}</ion-label>
+      <ion-input [(ngModel)]="_eventNameInput"></ion-input>
+    </ion-item>
+
+      <ion-row style="margin-left:0px">
+        <ion-item>
+          <ion-label color="primary" stacked>{{ "EVENT_CREATE.LABELS.ADD_FRIENDS" | translate}}</ion-label>
+          <ion-input  [(ngModel)]="_inviteFriendsInput"></ion-input>
+          <button ion-button outline item-end icon-start (click)="addContactsClicked(_targetContacts, _myGroups, _targetGroup)">
+            <ion-icon name="people"></ion-icon>
+            {{ "EVENT_CREATE.LABELS.ADD_FRIENDS_LABEL" | translate}}
+          </button>
+        </ion-item>
+      </ion-row>
+
+    <ion-item>
+      <ion-label color="primary" stacked>{{ "EVENT_CREATE.LABELS.PLACE_LABEL" | translate}}</ion-label>
+      <ion-input [(ngModel)]="_placeInput"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>{{ "EVENT_CREATE.LABELS.DATE_LABEL" | translate}}</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" max={{_maxDateChoseable}} [(ngModel)]="_dateChosen"></ion-datetime>
+    </ion-item>
+  <!---<button ion-button outline item-end icon-start (click)="createEventClicked()" class="button button-full button-positive">
+    <ion-icon name="add"></ion-icon> {{ "EVENT_CREATE.BUTTONS.CREATE_EVENT" | translate}}
+  </button>-->
+  <ion-item>
+    <ion-checkbox [(ngModel)]="_fixedCreateEventCB"></ion-checkbox>
+    <ion-label>{{ "EVENT_CREATE.LABELS.SET_FIXED" | translate}}</ion-label>
+  </ion-item>
+
+  <button class="create-button" ion-button round text-uppercase (click)="createEventClicked($event)">{{ "EVENT_CREATE.BUTTONS.CREATE_EVENT" | translate}}</button>
+  
+  <button class="create-button" style="margin-top: 2vh;" ion-button round text-uppercase (click)="quickCreateEventClicked($event)">Event merken</button>
+
+
+  </ion-list>
+</ion-content>

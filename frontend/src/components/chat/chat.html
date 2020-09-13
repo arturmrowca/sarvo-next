@@ -1,0 +1,55 @@
+<!-- Generated template for the ChatComponent component -->
+
+<div class="container clearfix" #contentContainer1>
+  <div class="chat" #contentContainer2>
+    <button *ngIf="showMoreButtonActive" item-right (click)="loadOlder()" clear style="background-color: transparent;">Load More...</button>
+    <div class="chat-history" #contentContainer3 [scrollTop]="contentContainer3.scrollHeight">
+      <ul class="chat-history-list" tabindex="1" #contentContainer4>
+        <chat-message [message]="msg" *ngFor="let msg of messages"></chat-message>
+      </ul>
+
+    </div> <!-- end chat-history -->
+
+  </div> <!-- end chat -->
+
+</div> <!-- end container -->
+
+<ion-footer no-border style="background-color: grey"> <!-- [style.height]="showEmojiPicker ? '255px' : '55px'" -->
+
+  <ion-item>
+    <input type="text" placeholder="Deine Nachricht"
+               [(ngModel)]="textFieldValue" style="width: 100%; border: none;"/>
+    <button item-right (click)="postNewMessage()" clear style="background-color: white;">
+      <ion-icon name="play" [isActive]="textFieldValue.length == 0" style="zoom:2.0;" ></ion-icon>
+    </button>
+  </ion-item>
+
+</ion-footer>
+
+
+<!--ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+</ion-footer-bar-->
+
+<!--script id="message-template" type="text/x-handlebars-template">
+  <li class="clearfix">
+    <div class="message-data align-right">
+      <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
+      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+    </div>
+    <div class="message other-message float-right">
+      {{messageOutput}}
+    </div>
+  </li>
+</script>
+
+<script id="message-response-template" type="text/x-handlebars-template">
+  <li>
+    <div class="message-data">
+      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+      <span class="message-data-time">{{time}}, Today</span>
+    </div>
+    <div class="message my-message">
+      {{response}}
+    </div>
+  </li>
+</script-->

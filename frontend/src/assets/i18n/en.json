@@ -1,0 +1,137 @@
+{
+  "HELLO": "WORLD",
+  "GENERAL": {
+    "CONTINUE": "Continue",
+    "OK": "OK",
+    "CANCEL": "Cancel",
+    "BACK": "Back",
+    "NEXT": "Next",
+    "INVITE": "Invite"
+  },
+  "USER_PAGE" : {
+    "BUTTONS": {
+      "CHANGE_RROFILE_IMAGE": "Change",
+      "SAVE": "Save"
+    },
+    "LABELS": {
+      "TITLE":"Your Profile!",
+      "USERNAME": "Name",
+      "PHONE_NUMBER": "Phone Number",
+      "USAGE_STATISTICS": "Share your statistics and help us improve!"
+    }
+  },
+  "EVENT_DETAILS" : {
+    "BUTTONS": {
+      "CHANGE_RROFILE_IMAGE": "Change",
+      "SAVE": "Save",
+      "MORE_FRIENDS": "+ Add friends",
+      "ADD_FRIEND": "Add",
+      "MANAGE_GROUPS": "Manage Groups",
+      "OPEN_MAPS": "Show in Maps"
+    },
+    "LABELS": {
+      "EVENT_NAME": "Name of Event:",
+      "PARTICIPATION": "Attending",
+      "ADD_FRIENDS": "Add friends:",
+      "DATE_LABEL": "Date",
+      "DATE_INPUT_LABEL": "Choose date...",
+      "PLACE_LABEL": "Place: ",
+      "ADD_VOTE_TITLE":"Add an Option or Set it fixed!",
+      "ADD_VOTE_ADD_OPTION_BUTTON":"New Date Option",
+      "ADD_VOTE_ADD_OPTION_CLICK":"Click here to choose Date",
+      "ADD_VOTE_DONE_BUTTON":"Done",
+      "EVENT_VOTE_TITLE":"Vote for Dates",
+      "EVENT_VOTE_DONE_BUTTON":"Done",
+      "EVENT_SWIPE_CHAT": "Swipe to chat!"
+    }
+  },
+  "EVENT_CREATE" : {
+    "BUTTONS": {
+      "MANAGE_GROUPS" : "Manage Groups",
+      "CREATE_EVENT" : "Create Event!"
+    },
+    "LABELS": {
+      "TITLE":"Start the Event",
+      "EVENT_NAME": "Name of Event:",
+      "ADD_FRIENDS": "Add friends:",
+      "ADD_FRIENDS_LABEL": "Add contact",
+      "ADD_FRIEND_BUTTON": "Add",
+      "DATE_LABEL": "Date",
+      "DATE_INPUT_LABEL": "Choose date...",
+      "PLACE_LABEL": "Place: ",
+      "OPEN_MAPS_LABEL": "Show in Maps",
+      "SET_FIXED":"Set this Event Fixed"
+    }
+  },
+  "LOGIN_PAGE": {
+    "TEXTS": {
+      "WELCOME_HEADLINE": "Welcome to S'Arvo!",
+      "WELCOME_TEXT": "Organize great events together!"
+    },
+    "BUTTONS": {
+      "VERIFY": "Send Verification Text"
+    },
+    "LABELS": {
+      "PHONE_NUMBER": "Phone#",
+      "SMS_CODE": "Your 6 Digit Code"
+    }
+  },
+  "TEMPLATE_PAGE": {
+    "TEXTS": {
+      "SAMPLE": "Text that appears on the page goes here"
+    },
+    "BUTTONS": {
+      "SAMPLE": "Text that ends up on buttons goes here"
+    },
+    "LABELS": {
+      "SAMPLE": "Text that is used on input labels goes here"
+    }
+  },
+  "HOME_PAGE": {
+    "BUTTONS": {
+      "MYEVENTS": "My events",
+      "PENDING": "Pending",
+      "ALL": "All"
+    },
+    "TEXTS": {
+      "NAVBAR_FIXED": "What's Up? - Fixed Events.",
+      "NAVBAR_PENDING": "What's Up? - Pending Events."
+    }
+  },
+  "EVENT_ATT_MGMT": {
+    "BUTTONS": {
+      "CONTACTS": "Contacts",
+      "GROUPS": "Groups"
+    }
+  },
+  "FEEDBACK": {
+    "TEXTS": {
+      "WELCOME_HEADLINE": "Gimme feedback, maan!",
+      "PL_CATEGORY": "Please choose a category here.",
+      "PL_TEXT": "Your feedback goes here."
+    },
+    "BUTTONS": {
+      "SEND": "Send"
+    },
+    "LABELS": {
+      "RATING": "Overall rating",
+      "CATEGORY": "Feedback category",
+      "FB_TEXT": "Tell us your story"
+    }
+  },
+  "GROUP_MGMT": {
+    "BUTTONS": {
+      "CHANGE_DESCRIPTION": "Change description",
+      "CHANGE_MEMBERS": "Edit members",
+      "CANCEL":"Cancel",
+      "CONTINUE":"Next"
+    },
+    "LABELS": {
+      "TITLE":"Your Groups!",
+      "ADD_GROUP_TITLE": "Group Name",
+      "ADD_GROUP_TEXT":"Please enter the name of your new group.",
+      "ADD_GROUP_PLACE":"Group Name"
+
+    }
+  }
+}

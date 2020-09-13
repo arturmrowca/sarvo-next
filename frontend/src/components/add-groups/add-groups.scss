@@ -1,0 +1,65 @@
+add-groups {
+
+}
+
+.circle-pic-member{
+  width:45px;
+  height:45px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.close-circle-member{
+  margin-top: -15px;
+  margin-left: 26px;
+  display: block;
+  border: #ffffff;
+  border-width: 2px;
+  color: gray;
+}
+
+.ion-scroll {
+  background: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+}
+
+.member {
+  display: inline-block;
+  text-align: center;
+  width: 60px;
+}
+
+.member img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.member-text {
+  margin-top: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: gray;
+}
+
+.checkmark-circle {
+  margin-left: -26px;
+  margin-top: -15px;
+  display: block;
+}
+
+.groups {
+  display: inline-block;
+  text-align: center;
+  width: 60px;
+}
+
+.groups img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

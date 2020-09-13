@@ -1,0 +1,96 @@
+event-vote-overlay {
+
+    $overlay-card-bg-color:color($colors, sarvo-white, base);
+
+    $overlay-card-title-color: color($colors, sarvo-white, base);
+    $overlay-card-title-bg-color:color($colors, sarvo-white, base);
+
+    $vote-option-card-color:color($colors, primary, base);
+    $vote-option-card-bg-color:color($colors, sarvo-white, base);
+
+    $vote-option-time-color:color($colors, primary, base);
+    $vote-option-date-color:color($colors, primary, base);
+
+    $vote-option-card-icon-color:color($colors, primary, base);
+
+    $vote-option-card-select-color:color($colors, primary, base);
+    $vote-option-card-select-bg-color:color($colors, sarvo-green, base);
+
+    $main-font:Franklin Gothic Thin,sans-serif;
+    $title-font:$main-font;
+    $card-font:$main-font;
+    $done-font:$main-font;
+
+    ::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
+    
+.overlay-ion-card{
+    position:absolute;
+    width:100vw;
+    left:0;
+    padding: 0 !important;
+    margin-left:0 !important;
+    margin-right:auto !important;
+    top:0vw;
+    height:97vh;
+    
+    background-color: $overlay-card-bg-color;
+    z-index: 2;
+    border-radius:10px !important;
+    opacity: 0.9;
+}
+
+.title-title-label{
+    text-align:center;
+    font-family:$title-font;
+    margin-top:5vw; 
+    background:$overlay-card-title-bg-color;
+    color:$overlay-card-title-color
+}
+
+
+.vote-option-card{
+    margin-right:-2vw;
+    width:95%;
+    height:100%;
+    font-family:$card-font;
+    border-radius:1px !important;
+    background:$vote-option-card-bg-color;
+    color:$vote-option-card-color;
+} 
+
+.ion-vote-option-selection1
+{
+    font-size:2px !important;
+    background:green;
+}
+.ion-vote-option-selection2
+{
+    font-size:2px !important;
+    background:white;
+}
+.ion-vote-option-selection3
+{
+    font-size:2px !important;
+    background:red;
+}
+
+.done-button{
+    background:color($colors, primary, base);
+    color:color($colors, sarvo-white, base);
+    font-family:$done-font;
+        font-size:5vw;
+        top:0vw;
+        margin:0 auto;
+        display:block;
+        height:7vh;
+        width:100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+}

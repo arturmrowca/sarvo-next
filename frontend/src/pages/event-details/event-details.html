@@ -1,0 +1,179 @@
+<!--- <ion-label  class="ion-title-style">Super Event</ion-label> -->
+<ion-header *ngIf="!eventView.options.overlayActive" no-border >
+    <ion-navbar transparent >
+        <ion-buttons left *ngIf="!descriptionEditingActive">
+            <button style="background:black;color:white;border-radius: 100px !important;width:40px;height:40px;" ion-button icon-only (click)="backToHome()" class="my-style-for-modal">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons right >
+            <button *ngIf="eventView.options.admin && !eventView.options.loading && !descriptionEditingActive" class="edit-button-nav" style="width:40px;height:40px;" ion-button icon-only (click)="_editButtonClicked()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    <ion-icon *ngIf="eventView.options.editIsActive && !descriptionEditingActive" (click)="_changeImageFromCamera()" style="position:absolute;top:2vh;left: 20vw;;color:white;background:black;font-size:10vw;border-radius: 100px !important;width:40px;height:40px;" name="camera"></ion-icon>
+  <ion-icon *ngIf="eventView.options.editIsActive && !descriptionEditingActive" (click)="_changeImageFromGallery()" style="position:absolute;top:2vh;left: 35vw;color:white;background:black;font-size:10vw;border-radius: 100px !important;width:40px;height:40px;" name="photos"></ion-icon>
+</ion-header>
+
+<ion-content *ngIf="eventView.options.overlayActive && !descriptionEditingActive" >
+    <add-vote-overlay  [view] = "eventView.options" [user] = "_user"  [attendOptions] = "_attendOptions" [event]="_event" [eventSpecsBox] = "eventView.gui.eventSpecsBox"  *ngIf="eventView.options.overlayActive && eventView.options.addOptionsActive"></add-vote-overlay>
+    <event-vote-overlay #eventVoteOverlay [view] = "eventView.options"[attendOptions] = "_attendOptions" [event]="_event" *ngIf="eventView.options.overlayActive && eventView.options.chooseOptionsActive"></event-vote-overlay>
+    <date-information *ngIf = "eventView.gui.generalBox.dateDetailsShowOverlay.value" [activeHeader] = "eventView.gui.generalBox.dateDetailsShowHeader" [show] = "eventView.gui.generalBox.dateDetailsShowOverlay" [_sarvoContactsIn] = "eventView.gui.generalBox.dateDetailsSarvoContactsIn" [_sarvoContactsMaybe] = "eventView.gui.generalBox.dateDetailsSarvoContactsMaybe" [_sarvoContactsOut] = "eventView.gui.generalBox.dateDetailsSarvoContactsOut" [_dateString] = "eventView.gui.generalBox.dateDetailsDate" [_dayString] = "eventView.gui.generalBox.dateDetailsDay" [_timeString] = "eventView.gui.generalBox.dateDetailsTime" ></date-information>
+</ion-content>
+
+
+<ion-content *ngIf="!eventView.options.overlayActive && !descriptionEditingActive" #mainIonContent class="main-background">
+    <loader *ngIf="eventView.options.loading"></loader>
+
+    <ion-slides  *ngIf="!eventView.options.overlayActive && !eventView.options.loading" pager="false">
+        <ion-slide style="height:100vh;width:120vw;overflow-y: scroll;display: block;">
+            <ion-card  class="main-ion-card" scrollY="true"> 
+            <ion-grid> 
+            
+                <ion-row class="main-card-title-label" >
+                    <ion-icon text-align-center style="margin-left:10vw;font-size:5vh;"  *ngIf="eventView.options.editIsActive" (click) = "changeNameClicked()" name="create"></ion-icon>
+                    <div style="width: 100%">
+                        <h1 style="text-align: center">{{_event.name}}</h1>
+                        <h4 style="text-align: center;">Von: {{_organizerName}}</h4>
+                    </div>
+                </ion-row>
+
+
+                <ion-row >
+                    <ion-col >
+                        <h2 class="main-card-starts-label" style="text-align:center !important;" >Startet in:</h2>
+                        <h4 class="main-card-time-label">{{_verifyStartTimeString(eventView.gui.eventSpecsBox.timeToEvent)}}</h4>
+                        <h4 class="main-card-date-label">{{_verifyStartFixedDateString(_event.fixedDate)}}</h4>
+                    </ion-col>
+
+                    <ion-col>
+                        <h2 class="main-card-starts-label">Ort:</h2>
+                        <ion-row align-items-left wrap text-wrap>
+                            <ion-icon class="main-card-location-icon" name="navigate" (click)="openInGmapsClicked()"></ion-icon>
+                            <ion-icon text-align-center item-right *ngIf="eventView.options.editIsActive" name="create" (click)="changeLocationClicked()"></ion-icon>
+                            <h4 class="main-card-location-label">{{_verifyLocationString(_event.location)}}</h4>
+                        </ion-row>
+
+                        <ion-row *ngIf="eventView.options.fixedDate" (click)="_fixedShowDetailsClicked()">
+                            <ion-col>
+                                <ion-icon class="event-fixed-count-icons" name="checkmark-circle">{{eventView.gui.eventSpecsBox.fixedAttendOption.nrIn}}</ion-icon>
+                            </ion-col>
+                            <ion-col>
+
+                                <ion-icon class="event-fixed-count-icons" name="contrast">{{eventView.gui.eventSpecsBox.fixedAttendOption.nrUnsure}}</ion-icon>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon class="event-fixed-count-icons" name="close-circle">{{eventView.gui.eventSpecsBox.fixedAttendOption.nrOut}}</ion-icon>
+                            </ion-col>
+
+                        </ion-row>
+
+
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="eventView.options.fixedDate && eventView.options.changeFixedDateExpanded">
+                        <ion-label class="add-date-choose-date-label">Hier fixes Datum ändern</ion-label>
+                        <ion-datetime  displayFormat="DDD. MMM DD, YYYY HH:mm" max="2100-06-06" day-short-names="Mon, Die, Mit, Don, Fre, Sam, Son" [(ngModel)]="eventView.gui.eventSpecsBox.changeFixedDateChosen" ></ion-datetime>
+                        <button *ngIf="eventView.options.changeFixedDateExpanded" ion-button full (click)="_changeFixedDateClose()">
+                                Auswahl beenden
+                        </button>
+                </ion-row>
+
+                <ion-row *ngIf="eventView.options.fixedDate">
+                        <ion-col (click) = "acceptOnFixedClicked(eventView.gui.eventSpecsBox.fixedAttendOption)">
+                            <ion-icon #acceptFixIcon center style="font-size:14vw;color:#1c3144;" name="checkmark-circle"></ion-icon>
+                            <ion-label text-align-center>Zusagen</ion-label>
+                        </ion-col>
+                        <ion-col (click) = "maybeOnFixedClicked(eventView.gui.eventSpecsBox.fixedAttendOption)">
+                            <ion-icon #maybeFixIcon center style="font-size:14vw;color:#1c3144;" name="contrast"></ion-icon>
+                            <ion-label text-align-center>Vielleicht</ion-label>
+                        </ion-col>
+                        <ion-col (click) = "denyOnFixedClicked(eventView.gui.eventSpecsBox.fixedAttendOption)">
+                            <ion-icon #denyFixIcon center style="font-size:14vw;color:#1c3144;" name="close-circle"></ion-icon>
+                            <ion-label text-align-center>Absagen</ion-label>
+                        </ion-col>
+
+                    </ion-row>
+
+
+                <ion-row *ngIf="!descriptionEditingActive && (_event.description != '->' || _event.description.length == 0 || eventView.options.editIsActive)">
+                    <ion-icon text-align-left style="font-size: 200%;margin-right:2vw;" *ngIf="eventView.options.editIsActive" name="create" (click)="changeDescriptionClicked()"></ion-icon>
+                    
+                    <!--ion-label text-left text-wrap class="main-card-description-label">{{eventView.gui.descriptionBox.descriptionTextShow}}</ion-label -->
+                    <ion-icon *ngIf="eventView.gui.descriptionBox.descriptionExpanded && !eventView.options.editIsActive" class="icon" style="font-size: 200%;margin-right:2vw;" (click)="eventView.expandDescription()" name="add"></ion-icon>
+                    <ion-icon *ngIf="!eventView.gui.descriptionBox.descriptionExpanded && !eventView.options.editIsActive" class="icon" style="font-size: 200%;margin-right:2vw;" (click)="eventView.expandDescription()" name="remove"></ion-icon>
+                    <div style="text-align: left;" [innerHtml]="eventView.gui.descriptionBox.descriptionTextShow"></div>
+                    
+                    <!--button class="description-expand-button" (click)="expandDescription()">{{descriptionExpandButtonText}}</button>-->
+                </ion-row>
+
+                <ion-row>
+                    <button *ngIf="eventView.options.fixedDate && eventView.options.admin" ion-button full (click)="_changeFixedDateClicked()">
+                            <ion-icon style="margin-right:2vw;"  name="clock"></ion-icon>
+                            Fixes Datum ändern
+                    </button>
+                    <button *ngIf="!eventView.options.fixedDate" ion-button full (click)="openDateVoteClicked()">
+                        <ion-icon style="margin-right:2vw;"  name="clock"></ion-icon>
+                        Datumsabstimmung
+                    </button>
+                    <button ion-button full (click)="openAddSetOptionsClicked()" *ngIf="eventView.options.admin">
+                            <ion-icon style="margin-right:2vw;"  name="stopwatch"> </ion-icon>
+                            Datumsoption verwalten
+                    </button>
+                    <button ion-button full (click)="addFriendClicked(_targetContacts, _myGroups, _targetGroup)">
+                        <ion-icon style="margin-right:2vw;" name="person-add"> </ion-icon>
+                        Personen hinzufügen
+                    </button>
+                    <button ion-button full (click)="deleteEventClicked()" *ngIf="eventView.options.admin">
+                        <ion-icon style="margin-right:2vw;" name="trash"> </ion-icon>  Löschen
+                    </button>
+                    <button ion-button full (click)="leaveEventClicked()" *ngIf="!eventView.options.admin">
+                        <ion-icon style="margin-right:2vw;" name="exit"> </ion-icon>
+                        Event verlassen
+                    </button>
+                    <button ion-button full *ngIf="hasNonSarvoContacts() && eventView.options.admin"  (click)="_displayNonRegisteredInformation()">
+                        Einladung an Nicht S'arvoaner
+                    </button>
+                </ion-row>
+
+                <ion-row justify-content-center align-items-center>
+                    <ion-icon large name="arrow-dropleft" style="font-size: 11vw;"></ion-icon>
+                    <ion-icon large name="arrow-dropleft" style="font-size: 11vw;"></ion-icon>
+                    <ion-icon large name="arrow-dropleft" style="font-size: 11vw;"></ion-icon>
+                    <span class="swipe-text">{{_swipeText}}</span>
+                </ion-row>
+ 
+            </ion-grid>
+        </ion-card>
+        </ion-slide>
+        <ion-slide style="background:white">
+            <h2 style="background:white"> Chat</h2>
+            <chat [event_id]="_event.id" [own_user_id]="_user.id" [_view] = "_view"></chat>
+        </ion-slide>
+
+    </ion-slides>
+</ion-content>
+
+<ion-content  *ngIf="descriptionEditingActive" >
+    <ion-row style = "margin-top: 5vh;">
+        <ion-item>
+            <p style="font-weight: bold;font-size: medium;">
+                Beschreibung für deine Veranstaltung:
+            </p>
+        </ion-item>
+    </ion-row>
+    <ion-row>
+        <ion-item>
+        <ion-textarea [attr.rows]="30" style = "pointer-events: auto;min-height: 70vh; height:70vh;background:whitesmoke;overflow:scroll;resize:none; position:relative;  -moz-user-select: text !important; -webkit-user-select: text !important;-ms-user-select: text !important;" placeholder="this._event.description" 
+            [(ngModel)]="this._event.description" name="note" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+    </ion-row>
+    
+    <ion-row>
+        <button ion-button full (click)="changeDescriptionClicked()">
+            <ion-icon style="margin-right:2vw;" name="disc"> </ion-icon>
+            Beschreibung speichern
+        </button>
+    </ion-row>
+</ion-content>

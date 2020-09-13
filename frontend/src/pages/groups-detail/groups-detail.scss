@@ -1,0 +1,49 @@
+page-groups-detail {
+  .toolbar-title-ios {
+    font-family:Roboto;
+  }
+  
+  .toolbar-title-md {
+    font-family:Roboto;
+  }
+}
+
+.circle-pic{
+  width:100vw;
+  height:100vw;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ion-scroll-float {
+  height: 12%;
+  padding-top: 2%;
+  overflow-x: scroll!important;
+}
+
+.ion-row-edit {
+  padding-top: 2%;
+  align-items: center;
+  justify-content: center;
+}
+
+.pic-edit-button {
+  position: absolute;
+  left: 0;
+  top: 2%;
+}
+
+.ion-row-change-mem {
+  align-items: center;
+  justify-content: center;
+}
+
+.group-member {
+  display: inline-block;
+  text-align: center;
+  width: 60px;
+}
+
+.descr-edit-button {
+}

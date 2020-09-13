@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{_navBarTitle}}
+        </ion-title> 
+  </ion-navbar>
+  <!-- <div *ngIf="arrowLeft" class="arrowleft bounceinv"></div> -->
+  <!-- <div  *ngIf="arrowRight" class="arrowright bounce"></div -->
+</ion-header> 
+
+
+<event-list *ngIf="false" #eventListInstance (slidesOut)="onSlidesEmitted($event)"></event-list>
+
+<ion-content>
+  <event-list #eventListInstance (slidesOut)="onSlidesEmitted($event)"></event-list>
+  
+  
+  <ion-fab bottom right>
+    <button #plusButton ion-fab [navPush]='eventCreate' [navParams]="{eli:eventListInstance}">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  <!--<ion-fab bottom center>
+    <button ion-fab (click)='eventQuickCreate()'>
+      <ion-icon name="disc"></ion-icon>
+    </button>
+  </ion-fab>-->
+
+  <ion-fab left bottom>
+    <button #feedButton  ion-fab (click)="onFeedbackClicked()">
+      <ion-icon  ios="ios-clipboard-outline" md="md-clipboard"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>
+
+
