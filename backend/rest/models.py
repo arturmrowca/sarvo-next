@@ -16,7 +16,7 @@ class SarvoUser(models.Model): #user=many -
     connectToCalendar = models.BooleanField(blank=True, default = False)
 
     agreedDSGVO = models.CharField(max_length=50, blank=True, default="0") # version of dsgvo that was agreed
-    authenticationUser = models.OneToOneField(User, default=None, null=True, on_delete=None)
+    authenticationUser = models.OneToOneField(User, default=None, null=True, on_delete=models.CASCADE)
 
 class Device(models.Model):
     sarvoUser = models.ForeignKey(SarvoUser, related_name="user", default=-1, on_delete=models.CASCADE)  # device is assigned one user
