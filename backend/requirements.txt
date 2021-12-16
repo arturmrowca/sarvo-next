@@ -4,7 +4,7 @@ django-pb-model==0.3.2
 django-rest==0.8.6
 django-sslserver==0.22
 djangorestframework==3.8.2
-psycopg2-binary
+psycopg2-binary==2.8.6
 requests==2.21.0
 PyJWT==1.7.1
 hyper==0.7.0
