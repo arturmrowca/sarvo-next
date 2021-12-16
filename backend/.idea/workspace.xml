@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="841ea093-a118-4fba-8692-75b071e189dc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/authentication/sms.py" beforeDir="false" afterPath="$PROJECT_DIR$/engine/authentication/sms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -305,9 +308,9 @@
     </configuration>
     <list>
       <item itemvalue="Python.cleanup" />
+      <item itemvalue="Python.manage" />
       <item itemvalue="Python.cron" />
       <item itemvalue="Python.manageHTTPS" />
-      <item itemvalue="Python.manage" />
       <item itemvalue="Python.shell" />
       <item itemvalue="Python.test" />
     </list>

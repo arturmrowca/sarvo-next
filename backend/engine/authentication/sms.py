@@ -4,11 +4,14 @@ import requests
 class SMS(object):
 
     # Account SID from twilio.com/console
-    _account_sid = "ACfdbba3ff997fa04451ac84da0c25f2b0"
-    # Auth Token from twilio.com/console
-    _auth_token  = "4d500357bd860f7430a18b0a8002144a"
-    # the client object we'll be using
-    _client = None
+    def __init__(self):
+        self._account_sid = "ACfdbba3ff997fa04451ac84da0c25f2b0"
+        # Auth Token from twilio.com/console
+        self._auth_token  = "7f6f7dbf1e1e538443978c844c5ec534"
+
+        # the client object we'll be using
+        from twilio.rest import Client
+        self._client = Client(self._account_sid, self._auth_token)
 
     def gen_verfication_code(self):
         '''
@@ -64,30 +67,38 @@ class SMS(object):
         :return: true if SMS was send successfully
         '''
 
+        message = self._client.messages \
+            .create(
+            body="S'Arvo Code: %s" % str(verification_code),
+            from_='+15156027506',
+            to=number_to_verifiy
+        )
+
+
         # authorization is base64 encoding of format "Username:API key", the following is for
         # "sarvo:'E06A21A0-4203-07CF-542E-68544AB743A6'"
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic c2Fydm86RTA2QTIxQTAtNDIwMy0wN0NGLTU0MkUtNjg1NDRBQjc0M0E2',
-        }
-
+        #headers = {
+        #    'Content-Type': 'application/json',
+        #    'Authorization': 'Basic c2Fydm86RTA2QTIxQTAtNDIwMy0wN0NGLTU0MkUtNjg1NDRBQjc0M0E2',
+        #}
         # data needs to have double curly braces for format() to work (single ones are used for inserting values)
-        data = """
-        {{
-            "messages":[
-                {{
-                    "source":"php",
-                    "body":"s'arvo code {}",
-                    "to":"{}"
-                }}
-            ]
-        }}
-        """.format(verification_code, number_to_verifiy)
+        #data = """
+        #{{
+        #    "messages":[
+        #        {{
+        #            "source":"php",
+        #            "body":"s'arvo code {}",
+        #            "to":"{}"
+        #        }}
+        #    ]
+        #}}
+        #""".format(verification_code, number_to_verifiy)
 
-        res = requests.post('https://rest.clicksend.com/v3/sms/send', headers=headers, data=data)  #
+        #res = requests.post('https://rest.clicksend.com/v3/sms/send', headers=headers, data=data)  #
 
-        if res.status_code == 200:
-            print("code {} sent to {}".format(verification_code, number_to_verifiy))
-            return True
-        return False
+        #if res.status_code == 200:
+        print("code {} sent to {}".format(verification_code, number_to_verifiy))
+        return True
+        #return True
+        #return False
 

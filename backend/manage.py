@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 import os
 import sys
-import warnings
-
-from engine.cleanup.database_cleanup import DataBaseCleanup
-
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
