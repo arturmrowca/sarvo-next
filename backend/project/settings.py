@@ -45,7 +45,6 @@ ALLOWED_HOSTS = ['*', '54.93.245.189','35.157.62.24', 'www.api.sarvo-api.xyz', '
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
     "sslserver",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -117,7 +116,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi.application'
+#WSGI_APPLICATION = 'wsgi.application'
 
 # SESSIONS
 SESSION_ENGINE='django.contrib.sessions.backends.db'

@@ -52,13 +52,14 @@ def config():
     if not name and engine == engines['sqlite']:
         name = os.path.join(settings.BASE_DIR, 'db.sqlite3')
     return {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        #'ENGINE': 'django.db.backends.postgresql',
-        #'NAME': "sarvodb",
-        #'USER': "sarvo",
-        #'PASSWORD': "YufBBhxTY4AA12FFFfpuS5",
-        #'HOST': "sarvo.io",
-        #'PORT': "5432"
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "defaultdb",
+        'USER': "doadmin",
+        'PASSWORD': "GBtsAE1UGCpmNLZ7",
+        'HOST': "sarvo-database-do-user-10003881-0.b.db.ondigitalocean.com",
+        'PORT': "25060",
+        'OPTIONS': {'sslmode': 'require'},
     }
 
