@@ -23,10 +23,12 @@ def generate_push_event(date="jederzeit", title="Titel", image_name="std_img,jpg
     :param testMode: Whether test mode to be active or not (shown in browser). As Boolean.
     """
     # hostname and credentials for db.
-    hostname = 'ls-4bd4b70dde975f755fa784f44fb7c6defa761dc9.cp2sma0o3rti.eu-central-1.rds.amazonaws.com'
-    username = 'dbmasteruser'
-    password = '*TB?WLR1XP=fk7~O3v*,osBix]%,K+wi'
-    database = 'postgres'
+    hostname = 'sarvo-database-do-user-10003881-0.b.db.ondigitalocean.com'
+    username = 'doadmin'
+    password = 'GBtsAE1UGCpmNLZ7'
+    database = 'defaultdb'
+    port = '25060'
+    sslmode = 'require'
     #'PORT': "5432"
 
     # Convert image.
@@ -38,6 +40,6 @@ def generate_push_event(date="jederzeit", title="Titel", image_name="std_img,jpg
     # Simple routine to run a query on a database and print the results:
     import psycopg2
     myConnection = None
-    if not testMode:myConnection = psycopg2.connect(host=hostname, user=username, password=password, dbname=database)
+    if not testMode:myConnection = psycopg2.connect(host=hostname, user=username, password=password, dbname=database, port=port, sslmode=sslmode)
     insertEvent(myConnection, date, title, image, descriptionIn, starChosen, category, location, numberPeople, duration, whatYouNeed, postMessage, testMode)
     if not testMode:myConnection.close()
