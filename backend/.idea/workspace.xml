@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="841ea093-a118-4fba-8692-75b071e189dc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sarvoPostgrePush/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../sarvoPostgrePush/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sarvoPostgrePush/events_source - Kopie.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sarvoPostgrePush/events_source.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../sarvoPostgrePush/events_source.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sarvoPostgrePush/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sarvoPostgrePush/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sarvoPostgrePush/push_events.py" beforeDir="false" afterPath="$PROJECT_DIR$/../sarvoPostgrePush/push_events.py" afterDir="false" />
-    </list>
+    <list default="true" id="841ea093-a118-4fba-8692-75b071e189dc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +156,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sarvoPostgrePush" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../travweb/traveweb/django" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
