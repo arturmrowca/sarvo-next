@@ -2,29 +2,14 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf.urls.static import static
-
-from fill.filler_main import fill_main
-from posts.views import index, travel_post, search, privacy_policy, about, track, track_post, render_dashboardspage
-
 from django.views.static import serve
+
+from free.views import index
 
 urlpatterns = [
     path('', index),
-    path('privacy-policy', privacy_policy),
-    path('about', about),
-
-    path('post/', travel_post),
-    path('post/<str:url>/', travel_post),
-
-    path('search/', search),
-    path('search/<str:url>/', search),
-
-    ################################################
-    # Expense Tracker
-    ################################################
-    path('money/track', track),
-    path('money/track/post', track_post),
-    path('money/dashboards/main', render_dashboardspage),
+    #path('privacy-policy', privacy_policy),
+    #path('about', about),
 
     # Admin: https://learndjango.com/tutorials/django-login-and-logout-tutorial
     #

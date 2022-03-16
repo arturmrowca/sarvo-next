@@ -9,14 +9,6 @@ warnings.filterwarnings("ignore")
 import pathlib
 sys.path.append(pathlib.Path(__file__).parent.resolve())
 
-"""import os
-from pathlib import Path
-path = Path(os.getcwd())
-destPath = path.parent.parent.parent.parent.absolute()
-import nltk
-nltk.data.path = [destPath]"""
-
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'truv.settings')
