@@ -1,0 +1,115 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div id="fh5co-main" style="margin-top:0px;padding:0px;">
+	<div class="fh5co-intro text-center" style="padding:0px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					{% if object_list|length == 1 %}
+    					<h2>We found {{ object_list|length }} result for your search for '{{ search_term }}'</h2>
+					{% else %}
+						<h2>We found {{ object_list|length }} results for '{{ search_term }}'</h2>
+					{% endif %}
+				</div>
+				<div class = "col-md-8 col-md-offset-2">
+
+					<form action="search/" method="POST">
+						{% csrf_token %}
+						<input type="text" name="searchItem" value="{{ search_term }}" style="float: center; padding: 5px; border-style: solid;  margin-top: 0px;  margin-left:00px;  font-size: 17px;width:100%;">
+						<p style="margin-top:10px">
+							<button class="btn btn-primary" style="padding:10px;width:100%;">Start Search</button>
+						</p>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-10 col-md-offset-1">
+		<div id="fh5co-portfolio">
+			<h2 style="padding-bottom:20px">Search Results for '{{ search_term }}'</h2>
+
+			{% for obj in object_list %}
+				{% if forloop.counter|divisibleby:2 %}
+
+					<div class="fh5co-portfolio-item fh5co-img-right">
+						<div class="fh5co-portfolio-figure animate-box" style="background-image: url({{ obj.mainImage.url }});"></div>
+						<div class="fh5co-portfolio-description" style="padding:15px">
+							<h2> {{ obj.title }}</h2>
+							<p style="padding:5px">{{ obj.overview }}</p>
+
+							<p><a href="/post/{{ obj.url }}/" class="btn btn-primary">Best things to do here</a></p>
+							<!--form action="post/{{ obj.url }}/" method="POST">
+								{% csrf_token %}
+								<p><button class="btn btn-primary">Best things to do here</button></p>
+								<input type="hidden" name="postIdChosen" value="{{ obj.id }}"/>
+							</form -->
+
+						</div>
+					</div>
+
+				  {% else %}
+					<div class="fh5co-portfolio-item ">
+						<div class="fh5co-portfolio-figure animate-box" style="background-image: url({{ obj.mainImage.url }});"></div>
+						<div class="fh5co-portfolio-description" style="padding:15px">
+							<h2>{{ obj.title }}</h2>
+							<p style="padding:5px">{{ obj.overview }}</p>
+
+							<p><a href="/post/{{ obj.url }}/" class="btn btn-primary">Best things to do here</a></p>
+
+						</div>
+					</div>
+
+				{% endif %}
+			{% endfor %}
+
+
+			<!-- div class="fh5co-portfolio-item fh5co-img-right" style="padding-top:20px;margin-right:auto;margin-left:auto; width: 100%;">
+				<div class="pagination:container" style="margin-right:auto;margin-left:auto;">
+				  <div class="pagination:number arrow">
+					<svg width="18" height="18">
+					  <use xlink:href="#left" />
+					</svg>
+					<span class="arrow:text">Previous</span>
+				  </div>
+
+				  <div class="pagination:number" style="background:#e32929;color:white;">
+					1
+				  </div>
+				  <div class="pagination:number">
+					2
+				  </div>
+
+				  <div class="pagination:number pagination:active">
+					3
+				  </div>
+
+				  <div class="pagination:number">
+					...
+				  </div>
+
+				  <div class="pagination:number">
+					540
+				  </div>
+
+				  <div class="pagination:number arrow">
+					<svg width="18" height="18">
+					  <use xlink:href="#right" />
+					</svg>
+				  </div>
+				</div>
+				<svg class="hide">
+				  <symbol id="left" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></symbol>
+				  <symbol id="right" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></symbol>
+				</svg>
+			</div -->
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="fh5co-main">
+	{% if alert_flag %}
+		{% if storedOk %}
+			<script>
+				alert("Stored successfully");
+				window.location.href = '../track';
+			</script>
+		{% else %}
+			<script>
+				alert("Not stored");
+				window.location.href = '../track';
+			</script>
+		{% endif %}
+	{% endif %}
+
+	<div class="fh5co-intro text-center" style="padding:20px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2 class="intro-lead">Track</h2>
+					<form action="/money/track/post">
+							<label style="width:20%" for="fname">Name</label>
+							<input style="width:70%" type="text" id="fname" name="fname"><br>
+							<label style="width:20%" for="pin">PIN</label>
+							<input style="width:70%" type="password" id="pin" name="pin"><br>
+							<label style="width:20%" for="desc">Description:</label>
+							<input style="width:70%" type="text" id="desc" name="desc"><br>
+							<label style="width:20%" for="value">Value:</label>
+							<input style="width:70%" type="text" id="value" name="value"><br>
+							<label style="width:20%" for="date">Date ('' is today):</label>
+							<input style="width:70%" type="text" id="date" name="date"><br>
+							<input type="submit" value="Submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-content">
+		<div class="container">
+
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content %}

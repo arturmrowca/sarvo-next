@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="fh5co-main">
+	<div class="fh5co-intro text-center" style="padding:20px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h1 class="intro-lead">{{ post_object.postTitle}}</h1>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="row">
+
+						<div class="col-md-9 col-md-push-1">
+							<p> {{ post_object.entryText }}</p>
+
+							{% for obj in post_object.entries.all %}
+								<h1>{{ forloop.counter }}.  {{ obj.title }}</h1>
+								<img src="{{ obj.image.url }}" alt="" style="max-width: 100%;max-height: 100%;padding-bottom:10px;"/>
+								<div>
+									<p>Source: <a href="{{ obj.imageSourceHref }}" target="_blank">{{ obj.imageSourceText }}</a></p>
+								</div>
+								<p class="animate-box" style="white-space: pre-line">{{ obj.infoText}}</p>
+							{% endfor %}
+						</div>
+
+						<div class="col-md-3 col-md-push-1 animate-box">
+							<h3>Other Popular Locations</h3>
+							<p>Discover more of the world. Here you find a selection of places that we recommend to visit. Check it out. </p>
+							<ul class="fh5co-list-check">
+								{% for obj in rec_post_objects.all %}
+
+									<a href="/post/{{ obj.url }}/">
+									<li>{{ obj.postTitle}}</li>
+										</a>
+									<img src="{{ obj.mainImage.url }}" alt="" style="max-width: 100%;max-height: 100%;padding-bottom:10px;"/>
+								{% endfor %}
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content %}
