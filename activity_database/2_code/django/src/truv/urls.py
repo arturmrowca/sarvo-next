@@ -39,31 +39,3 @@ else:
     #urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 
-############################################
-# Start filler
-############################################
-import sys
-try:
-    if sys.argv[2].split(":")[-1] == "9999":
-        import logging
-        import threading
-        import time
-
-        def thread_function(name):
-            logging.info("Thread %s: starting", name)
-            fill_main()
-            logging.info("Thread %s: finishing", name)
-
-        format = "%(asctime)s: %(message)s"
-        logging.basicConfig(format=format, level=logging.INFO,
-                                datefmt="%H:%M:%S")
-
-        x = threading.Thread(target=thread_function, args=(1,))
-        x.start()
-
-except:
-    pass
-# TEST# TEST# TEST# TEST# TEST# TEST# TEST# TEST# TEST# TEST# TEST
-#searchQueryPost(Post, PostEntry, "Lombard")
-
-
