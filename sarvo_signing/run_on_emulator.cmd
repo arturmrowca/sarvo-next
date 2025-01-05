@@ -1,1 +1,0 @@
-C:\Users\artur\AppData\Local\Android\Sdk\platform-tools\adb install C:\workspace\sarvo\signed-app.apk
