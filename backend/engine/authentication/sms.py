@@ -5,9 +5,9 @@ class SMS(object):
 
     # Account SID from twilio.com/console
     def __init__(self):
-        self._account_sid = "ACfdbba3ff997fa04451ac84da0c25f2b0"
+        self._account_sid =""
         # Auth Token from twilio.com/console
-        self._auth_token  = "7f6f7dbf1e1e538443978c844c5ec534"
+        self._auth_token  = ""
 
         # the client object we'll be using
         from twilio.rest import Client
